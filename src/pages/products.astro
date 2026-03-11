@@ -20,12 +20,12 @@ interface Listing {
 }
 
 const featureMap: Record<string, string[]> = {
-  'Wake Up to Finished Work': [
+  'Wake Up': [
     '6-agent system pre-configured',
     'Runs overnight autonomously',
     'Ready to deploy in minutes',
   ],
-  'Your AI Revenue GM': [
+  'Revenue GM': [
     'Tracks revenue signals 24/7',
     'Flags opportunities automatically',
     'No manual monitoring needed',
@@ -35,12 +35,12 @@ const featureMap: Record<string, string[]> = {
     'Deploy without touching terminal',
     'Error detection built in',
   ],
-  'The Coordination Layer': [
+  'Coordination Layer': [
     'Multi-agent OS architecture',
     'One agent routes everything',
     'No context drift between agents',
   ],
-  'Free Multi-Agent Starter Kit': [
+  'Starter Kit': [
     '4 core config files included',
     'Works with any OpenClaw setup',
     'Zero cost to start',
@@ -69,14 +69,23 @@ const toDollars = (listing: Listing) => {
 const getName = (listing: Listing) => listing.name || listing.title || 'Untitled Product';
 
 const fallbackTaglines: Record<string, string> = {
-  'Free Multi-Agent Starter Kit': 'The fastest way to see what a real agent setup looks like.',
-  'Wake Up to Finished Work': 'Set it before bed. Wake up to results.',
-  'Your AI Revenue GM': 'Never miss a signal that could turn into money.',
+  'Starter Kit': 'The fastest way to see what a real agent setup looks like.',
+  'Wake Up': 'Set it before bed. Wake up to results.',
+  'Revenue GM': 'Never miss a signal that could turn into money.',
   'Ship to Production': 'From task to deployed. No terminal required.',
-  'The Coordination Layer': 'One agent routes everything. Zero context drift.',
+  'Coordination Layer': 'One agent routes everything. Zero context drift.',
 };
 
-const getTagline = (listing: Listing) => fallbackTaglines[getName(listing)] || '';
+const findProductKey = (name: string, keys: string[]) => {
+  const normalizedName = name.toLowerCase();
+  return keys.find((key) => normalizedName.includes(key.toLowerCase()));
+};
+
+const getTagline = (listing: Listing) => {
+  const name = getName(listing);
+  const key = findProductKey(name, Object.keys(fallbackTaglines));
+  return key ? fallbackTaglines[key] : '';
+};
 
 const getUrl = (listing: Listing) => listing.publicUrl || listing.public_url || '#';
 
@@ -144,7 +153,11 @@ const genericFeatures = (listing: Listing) => {
   return [...dynamic, ...defaults].slice(0, 3);
 };
 
-const getFeatures = (listing: Listing) => featureMap[getName(listing)] ?? genericFeatures(listing);
+const getFeatures = (listing: Listing) => {
+  const name = getName(listing);
+  const key = findProductKey(name, Object.keys(featureMap));
+  return key ? featureMap[key] : genericFeatures(listing);
+};
 ---
 
 <Layout
