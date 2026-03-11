@@ -35,11 +35,17 @@ const nav = [
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
+    <!-- OG / Twitter card -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={`https://theagentcrew.org${Astro.url.pathname}`} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={Astro.url.href} />
+    <meta property="og:image" content="https://theagentcrew.org/og-default.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@theagentcrew" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://theagentcrew.org/og-default.jpg" />
     <meta name="theme-color" content="#0a0a0f" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
