@@ -20,7 +20,7 @@ const nav = [
 ---
 
 <!doctype html>
-<html lang="en" class="bg-dark-base">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -39,29 +39,49 @@ const nav = [
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+    <script is:inline>
+      (() => {
+        const savedTheme = localStorage.getItem('theme');
+        const theme = savedTheme === 'light' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
     <title>{title}</title>
   </head>
-  <body class="min-h-screen bg-dark-base text-slate-100 antialiased">
-    <header class="sticky top-0 z-30 border-b border-slate-800/80 bg-dark-base/95 backdrop-blur">
+  <body class="min-h-screen antialiased">
+    <header class="site-header sticky top-0 z-30 border-b backdrop-blur">
       <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <a href="/" class="text-lg font-bold tracking-tight">The Agent Crew</a>
-        <ul class="flex items-center gap-6 text-sm font-medium text-slate-300">
-          {nav.map((item) => (
-            <li>
-              <a
-                href={item.href}
-                class:list={[
-                  'transition hover:text-white',
-                  currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href))
-                    ? 'text-white'
-                    : 'text-slate-300',
-                ]}
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <div class="flex items-center gap-4">
+          <ul class="flex items-center gap-6 text-sm font-medium">
+            {nav.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  class:list={[
+                    'nav-link transition',
+                    currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href))
+                      ? 'nav-link-active'
+                      : '',
+                  ]}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          <button
+            id="theme-toggle"
+            type="button"
+            class="theme-toggle"
+            aria-label="Switch to light mode"
+            title="Toggle color theme"
+          >
+            <span class="theme-icon theme-icon-moon" aria-hidden="true">🌙</span>
+            <span class="theme-icon theme-icon-sun" aria-hidden="true">☀️</span>
+          </button>
+        </div>
       </nav>
     </header>
 
@@ -69,8 +89,39 @@ const nav = [
       <slot />
     </main>
 
-    <footer class="border-t border-slate-800/80 py-8 text-center text-sm text-slate-400">
+    <footer class="site-footer border-t py-8 text-center text-sm">
       Built with ✨ by Nova and the crew
     </footer>
+
+    <script is:inline>
+      (() => {
+        const themeToggle = document.getElementById('theme-toggle');
+        const root = document.documentElement;
+        const themeMeta = document.querySelector('meta[name="theme-color"]');
+
+        const applyTheme = (theme) => {
+          root.setAttribute('data-theme', theme);
+          localStorage.setItem('theme', theme);
+
+          if (themeToggle) {
+            const nextTheme = theme === 'dark' ? 'light' : 'dark';
+            themeToggle.setAttribute('aria-label', `Switch to ${nextTheme} mode`);
+          }
+
+          if (themeMeta) {
+            themeMeta.setAttribute('content', theme === 'dark' ? '#0a0a0f' : '#f8fafc');
+          }
+        };
+
+        if (themeToggle) {
+          themeToggle.addEventListener('click', () => {
+            const currentTheme = root.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+            applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+          });
+        }
+
+        applyTheme(root.getAttribute('data-theme') === 'light' ? 'light' : 'dark');
+      })();
+    </script>
   </body>
 </html>
