@@ -59,10 +59,10 @@ const nav = [
   </head>
   <body class="min-h-screen antialiased">
     <header class="site-header sticky top-0 z-30 border-b backdrop-blur">
-      <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a href="/" class="text-lg font-bold tracking-tight">The Agent Crew</a>
-        <div class="flex items-center gap-4">
-          <ul class="flex items-center gap-6 text-sm font-medium">
+      <nav class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-6 py-4">
+        <a href="/" class="shrink-0 whitespace-nowrap text-base font-bold tracking-tight sm:text-lg">The Agent Crew</a>
+        <div class="flex items-center gap-3 sm:gap-4">
+          <ul class="hidden items-center gap-6 text-sm font-medium md:flex">
             {nav.map((item) => (
               <li>
                 <a
@@ -79,6 +79,34 @@ const nav = [
               </li>
             ))}
           </ul>
+
+          <details class="mobile-nav relative md:hidden">
+            <summary
+              class="mobile-nav-toggle [&::-webkit-details-marker]:hidden"
+              aria-label="Toggle navigation menu"
+            >
+              <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 7h16M4 12h16M4 17h16" />
+              </svg>
+            </summary>
+            <ul class="mobile-nav-menu">
+              {nav.map((item) => (
+                <li>
+                  <a
+                    href={item.href}
+                    class:list={[
+                      'mobile-nav-link',
+                      currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href))
+                        ? 'nav-link-active'
+                        : 'nav-link',
+                    ]}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </details>
 
           <button
             id="theme-toggle"
