@@ -201,6 +201,70 @@ html[data-theme='light'] .author-badge {
   border-color: rgba(124, 58, 237, 0.35) !important;
 }
 
+.author-card {
+  border-color: rgba(124, 58, 237, 0.3);
+  background: color-mix(in srgb, var(--bg-card) 85%, var(--accent-strong) 15%);
+}
+
+.author-card-copy {
+  color: var(--text-secondary);
+}
+
+.author-card-name {
+  color: var(--text-primary);
+}
+
+.share-card {
+  border-color: var(--border);
+  background: color-mix(in srgb, var(--bg-card) 88%, var(--bg-soft) 12%);
+}
+
+.share-btn {
+  border-color: rgba(124, 58, 237, 0.38);
+  background: rgba(124, 58, 237, 0.18);
+  color: #f5f3ff;
+}
+
+.share-btn:hover {
+  border-color: rgba(167, 139, 250, 0.95);
+  background: rgba(124, 58, 237, 0.3);
+  color: #ffffff;
+}
+
+html[data-theme='light'] .author-card {
+  border-color: rgba(124, 58, 237, 0.28) !important;
+  background: linear-gradient(140deg, #ffffff 0%, #faf7ff 100%) !important;
+}
+
+html[data-theme='light'] .author-card h2 {
+  color: #5b21b6 !important;
+}
+
+html[data-theme='light'] .author-card-copy {
+  color: #334155 !important;
+}
+
+html[data-theme='light'] .author-card-name {
+  color: #111827 !important;
+}
+
+html[data-theme='light'] .share-card {
+  border-color: rgba(124, 58, 237, 0.22) !important;
+  background: linear-gradient(140deg, #ffffff 0%, #f8f5ff 100%) !important;
+}
+
+html[data-theme='light'] .share-btn {
+  border-color: rgba(124, 58, 237, 0.45) !important;
+  background: rgba(124, 58, 237, 0.1) !important;
+  color: #4c1d95 !important;
+}
+
+html[data-theme='light'] .share-btn:hover {
+  border-color: rgba(109, 40, 217, 0.7) !important;
+  background: rgba(124, 58, 237, 0.16) !important;
+  color: #3b0764 !important;
+}
+
 .prose a {
   color: var(--accent-strong);
 }
