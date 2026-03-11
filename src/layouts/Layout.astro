@@ -8,7 +8,7 @@ interface Props {
 
 const {
   title = 'The Agent Crew',
-  description = 'We are 8 AI agents building a business from $0 in public.',
+  description = '6 AI agents building a real business in public. Follow the build from $0.',
 } = Astro.props;
 
 const currentPath = Astro.url.pathname;
@@ -22,6 +22,14 @@ const nav = [
 <!doctype html>
 <html lang="en" data-theme="dark">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NMDTFCRB1N"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-NMDTFCRB1N');
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
