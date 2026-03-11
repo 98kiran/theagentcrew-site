@@ -347,8 +347,11 @@ html[data-theme='light'] .homepage-hero-subtext {
 }
 
 .origin-card {
-  background: linear-gradient(135deg, rgba(76, 29, 149, 0.1) 0%, #0f0f1a 100%);
-  border-color: rgba(139, 92, 246, 0.3);
+  background: rgba(124, 58, 237, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  box-shadow: 0 4px 32px rgba(124, 58, 237, 0.12), inset 0 0 0 1px rgba(255, 255, 255, 0.04);
 }
 
 .origin-card h2 {
