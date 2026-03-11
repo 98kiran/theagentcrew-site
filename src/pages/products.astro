@@ -1,0 +1,150 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+export const prerender = false;
+
+const apiKey = import.meta.env.CLAWMART_API_KEY;
+
+interface Listing {
+  id?: string | number;
+  name?: string;
+  title?: string;
+  tagline?: string;
+  description?: string;
+  status?: string;
+  price?: number | string;
+  amount?: number | string;
+  publicUrl?: string;
+  public_url?: string;
+  slug?: string;
+}
+
+const toNumber = (value: unknown) => {
+  if (typeof value === 'number') return value;
+  if (typeof value === 'string') {
+    const n = Number(value);
+    return Number.isFinite(n) ? n : NaN;
+  }
+  return NaN;
+};
+
+const toDollars = (listing: Listing) => {
+  const direct = toNumber(listing.price);
+  if (Number.isFinite(direct)) return direct;
+
+  const amount = toNumber(listing.amount);
+  if (!Number.isFinite(amount)) return 0;
+
+  return amount > 1000 ? amount / 100 : amount;
+};
+
+let listings: Listing[] = [];
+let fetchError = '';
+
+if (!apiKey) {
+  fetchError = 'CLAWMART_API_KEY is missing on the server.';
+} else {
+  try {
+    const response = await fetch('https://www.shopclawmart.com/api/v1/listings', {
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+      },
+    });
+
+    if (!response.ok) {
+      fetchError = `Unable to load products right now (HTTP ${response.status}).`;
+    } else {
+      const payload = await response.json();
+      const data = Array.isArray(payload) ? payload : payload?.data;
+      const rawListings = Array.isArray(data) ? data : [];
+
+      listings = rawListings
+        .filter((item: Listing) => item?.status === 'active')
+        .sort((a: Listing, b: Listing) => {
+          const aPrice = toDollars(a);
+          const bPrice = toDollars(b);
+          const aFree = aPrice === 0;
+          const bFree = bPrice === 0;
+
+          if (aFree && !bFree) return -1;
+          if (!aFree && bFree) return 1;
+          return aPrice - bPrice;
+        });
+    }
+  } catch {
+    fetchError = 'Unable to reach Claw Mart right now. Please try again soon.';
+  }
+}
+
+const formatPrice = (listing: Listing) => {
+  const amount = toDollars(listing);
+  if (amount === 0) return 'Free';
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 2,
+  }).format(amount);
+};
+
+const getName = (listing: Listing) => listing.name || listing.title || 'Untitled Product';
+const getTagline = (listing: Listing) => listing.tagline || listing.description || 'Built by The Agent Crew.';
+const getUrl = (listing: Listing) => listing.publicUrl || listing.public_url || '#';
+---
+
+<Layout
+  title="Products | The Agent Crew"
+  description="Explore The Agent Crew tool stack available on Claw Mart."
+>
+  <section class="homepage-hero-card space-y-5 rounded-2xl border border-violet-500/30 bg-gradient-to-br from-violet-900/20 to-dark-surface p-10">
+    <p class="text-sm font-semibold uppercase tracking-wider text-violet-300">The Stack</p>
+    <h1 class="max-w-4xl text-4xl font-extrabold leading-tight md:text-5xl">Our Tools</h1>
+    <p class="homepage-hero-subtext max-w-2xl text-lg text-slate-300">
+      Every product we ship in one place — starter resources, paid playbooks, and launch-week specials.
+    </p>
+  </section>
+
+  {fetchError ? (
+    <section class="mt-10 rounded-xl border border-amber-300/35 bg-amber-500/10 p-5 text-amber-100">
+      {fetchError}
+    </section>
+  ) : (
+    <section class="mt-10 grid gap-6 md:grid-cols-2">
+      {listings.map((listing) => {
+        const price = toDollars(listing);
+        const isFree = price === 0;
+        const isLaunchWeek = price === 19;
+
+        return (
+          <article class="rounded-xl border border-slate-800 bg-dark-card p-6">
+            <div class="mb-4 flex flex-wrap items-center gap-2">
+              {isFree && (
+                <span class="rounded-full border border-violet-500/40 bg-violet-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-violet-200">
+                  Free
+                </span>
+              )}
+              {isLaunchWeek && (
+                <span class="rounded-full border border-amber-300/35 bg-amber-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-amber-100">
+                  Launch Week
+                </span>
+              )}
+            </div>
+
+            <h2 class="text-2xl font-extrabold">{getName(listing)}</h2>
+            <p class="mt-2 text-3xl font-black text-violet-300">{formatPrice(listing)}</p>
+            <p class="mt-4 text-slate-300">{getTagline(listing)}</p>
+
+            <a
+              href={getUrl(listing)}
+              class="mt-6 inline-flex items-center justify-center rounded-lg border border-violet-500/40 bg-violet-500/10 px-4 py-2 text-sm font-semibold text-violet-100 hover:border-violet-500/60 hover:bg-violet-500/20"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Get it on Claw Mart
+            </a>
+          </article>
+        );
+      })}
+    </section>
+  )}
+</Layout>
