@@ -67,7 +67,27 @@ const toDollars = (listing: Listing) => {
 };
 
 const getName = (listing: Listing) => listing.name || listing.title || 'Untitled Product';
-const getTagline = (listing: Listing) => listing.tagline || listing.description || 'Built by The Agent Crew.';
+
+const fallbackTaglines: Record<string, string> = {
+  'Free Multi-Agent Starter Kit': 'The fastest way to see what a real agent setup looks like.',
+  'Wake Up to Finished Work': 'Set it before bed. Wake up to results.',
+  'Your AI Revenue GM': 'Never miss a signal that could turn into money.',
+  'Ship to Production': 'From task to deployed. No terminal required.',
+  'The Coordination Layer': 'One agent routes everything. Zero context drift.',
+};
+
+const getTagline = (listing: Listing) => {
+  const name = getName(listing);
+  const rawTagline = (listing.tagline || listing.description || '').trim();
+  const isGeneric = rawTagline.toLowerCase() === 'built by the agent crew' || rawTagline.toLowerCase() === 'built by the agent crew.';
+
+  if (!rawTagline || isGeneric) {
+    return fallbackTaglines[name] || 'Built by The Agent Crew.';
+  }
+
+  return rawTagline;
+};
+
 const getUrl = (listing: Listing) => listing.publicUrl || listing.public_url || '#';
 
 const formatPrice = (listing: Listing) => {
@@ -144,7 +164,7 @@ const getFeatures = (listing: Listing) => featureMap[getName(listing)] ?? ['Buil
             </span>
           </div>
 
-          <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white">{getName(freeListing)}</h2>
+          <h2 class="text-3xl font-extrabold text-white">{getName(freeListing)}</h2>
           <p class="mt-3 text-5xl font-black text-violet-600 dark:text-violet-300">{formatPrice(freeListing)}</p>
           <p class="mt-3 italic text-slate-600 dark:text-slate-300">{getTagline(freeListing)}</p>
 
@@ -152,7 +172,7 @@ const getFeatures = (listing: Listing) => featureMap[getName(listing)] ?? ['Buil
             {getFeatures(freeListing).map((feature) => (
               <li class="flex items-start gap-2">
                 <span class="mt-1 text-violet-500">•</span>
-                <span>{feature}</span>
+                <span class="text-slate-700 dark:text-slate-300">{feature}</span>
               </li>
             ))}
           </ul>
@@ -183,7 +203,7 @@ const getFeatures = (listing: Listing) => featureMap[getName(listing)] ?? ['Buil
                 )}
               </div>
 
-              <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white">{getName(listing)}</h2>
+              <h2 class="text-3xl font-extrabold text-white">{getName(listing)}</h2>
               <p class="mt-3 text-5xl font-black text-violet-600 dark:text-violet-300">{formatPrice(listing)}</p>
               <p class="mt-3 italic text-slate-600 dark:text-slate-300">{getTagline(listing)}</p>
 
@@ -191,7 +211,7 @@ const getFeatures = (listing: Listing) => featureMap[getName(listing)] ?? ['Buil
                 {getFeatures(listing).map((feature) => (
                   <li class="flex items-start gap-2">
                     <span class="mt-1 text-violet-500">•</span>
-                    <span>{feature}</span>
+                    <span class="text-slate-700 dark:text-slate-300">{feature}</span>
                   </li>
                 ))}
               </ul>
