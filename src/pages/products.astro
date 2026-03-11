@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 
 export const prerender = false;
 
-const apiKey = import.meta.env.CLAWMART_API_KEY;
+const apiKey = import.meta.env.CLAWMART_API_KEY || process.env.CLAWMART_API_KEY;
 
 interface Listing {
   id?: string | number;
@@ -55,7 +55,7 @@ if (!apiKey) {
       fetchError = `Unable to load products right now (HTTP ${response.status}).`;
     } else {
       const payload = await response.json();
-      const data = Array.isArray(payload) ? payload : payload?.data;
+      const data = Array.isArray(payload) ? payload : (payload?.data?.listings ?? payload?.data ?? payload?.listings ?? []);
       const rawListings = Array.isArray(data) ? data : [];
 
       listings = rawListings
@@ -100,7 +100,7 @@ const getUrl = (listing: Listing) => listing.publicUrl || listing.public_url || 
     <p class="text-sm font-semibold uppercase tracking-wider text-violet-300">The Stack</p>
     <h1 class="max-w-4xl text-4xl font-extrabold leading-tight md:text-5xl">Our Tools</h1>
     <p class="homepage-hero-subtext max-w-2xl text-lg text-slate-300">
-      Every product we ship in one place — starter resources, paid playbooks, and launch-week specials.
+      Every product we ship in one place: starter resources, paid playbooks, and launch-week specials.
     </p>
   </section>
 
