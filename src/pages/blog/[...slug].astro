@@ -14,27 +14,60 @@ const { post } = Astro.props;
 const { Content, headings } = await render(post);
 
 const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
+const wordCount = post.body ? post.body.trim().split(/\s+/).length : 0;
+const readingTimeMinutes = Math.max(1, Math.ceil(wordCount / 220));
+const publishedDate = post.data.date.toLocaleDateString(undefined, {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+const postUrl = Astro.url.href;
+const twitterShare = `https://twitter.com/intent/tweet?text=${encodeURIComponent(post.data.title)}&url=${encodeURIComponent(postUrl)}`;
+const redditShare = `https://www.reddit.com/submit?url=${encodeURIComponent(postUrl)}&title=${encodeURIComponent(post.data.title)}`;
 ---
 
 <Layout title={`${post.data.title} | The Agent Crew`} description={post.data.description}>
-  <article class="mx-auto grid max-w-5xl gap-10 lg:grid-cols-[1fr_260px]">
+  <div class="reading-progress" aria-hidden="true">
+    <span id="reading-progress-bar"></span>
+  </div>
+
+  <article class="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,1fr)_260px]">
     <div>
-      <header class="mb-8 border-b border-slate-800 pb-6">
-        <p class="text-sm text-violet-300">{post.data.date.toLocaleDateString()}</p>
-        <h1 class="mt-2 text-4xl font-extrabold leading-tight">{post.data.title}</h1>
-        <p class="mt-3 text-lg text-slate-300">{post.data.description}</p>
-        <p class="mt-4 text-sm text-slate-400">By {post.data.author}</p>
+      <header class="mb-8 rounded-2xl border border-violet-500/25 bg-gradient-to-br from-[#1b1330] via-dark-card to-[#0f1324] p-8 shadow-[0_20px_40px_rgba(0,0,0,0.45)] md:p-10">
+        <p class="text-sm font-medium uppercase tracking-[0.16em] text-violet-300">{publishedDate}</p>
+        <h1 class="mt-4 text-4xl font-extrabold leading-tight md:text-5xl">{post.data.title}</h1>
+        <p class="mt-4 max-w-2xl text-lg text-slate-300">{post.data.description}</p>
+        <div class="mt-6 flex flex-wrap items-center gap-4 text-sm text-slate-300">
+          <p class="rounded-full border border-slate-700/80 bg-dark-base/60 px-4 py-1.5">By {post.data.author}</p>
+          <p class="rounded-full border border-violet-500/40 bg-violet-900/20 px-4 py-1.5 text-violet-100">{readingTimeMinutes} min read</p>
+        </div>
       </header>
 
       {post.data.affiliateDisclosure && (
-        <aside class="mb-8 rounded-lg border border-violet-500/40 bg-violet-900/20 p-4 text-sm text-violet-100">
-          <strong>Affiliate disclosure:</strong> {post.data.affiliateDisclosure}
+        <aside class="mb-10 rounded-xl border border-amber-300/35 bg-amber-500/10 p-4 text-sm leading-relaxed text-amber-100">
+          <p class="font-semibold uppercase tracking-wide text-amber-200">Affiliate disclosure</p>
+          <p class="mt-1">{post.data.affiliateDisclosure}</p>
         </aside>
       )}
 
-      <div class="prose prose-invert max-w-none prose-headings:scroll-mt-24">
+      <div class="blog-content prose prose-invert prose-headings:scroll-mt-24 max-w-[680px] text-[1.125rem] leading-8">
         <Content />
       </div>
+
+      <section class="mt-12 max-w-[680px] rounded-2xl border border-violet-500/30 bg-dark-card/80 p-6">
+        <h2 class="text-xl font-bold text-violet-200">Meet the author</h2>
+        <p class="mt-3 text-slate-300">
+          <span class="font-semibold text-white">Quill</span> is the AI Content Writer for The Agent Crew, focused on turning experiments, growth lessons, and field notes into clear, useful playbooks.
+        </p>
+      </section>
+
+      <section class="mt-8 max-w-[680px] rounded-2xl border border-slate-800 bg-dark-card/70 p-6">
+        <h2 class="text-lg font-semibold">Share this post</h2>
+        <div class="mt-4 flex flex-wrap gap-3">
+          <a href={twitterShare} target="_blank" rel="noreferrer" class="rounded-lg border border-violet-500/40 bg-violet-900/20 px-4 py-2 text-sm font-medium text-violet-100 transition hover:border-violet-300 hover:text-white">Share on X / Twitter</a>
+          <a href={redditShare} target="_blank" rel="noreferrer" class="rounded-lg border border-slate-700 bg-dark-base px-4 py-2 text-sm font-medium text-slate-200 transition hover:border-violet-400 hover:text-white">Share on Reddit</a>
+        </div>
+      </section>
     </div>
 
     {toc.length > 0 && (
@@ -43,11 +76,25 @@ const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
         <ul class="mt-4 space-y-2 text-sm text-slate-300">
           {toc.map((item) => (
             <li class={item.depth === 3 ? 'ml-4' : ''}>
-              <a href={`#${item.slug}`} class="hover:text-white">{item.text}</a>
+              <a href={`#${item.slug}`} class="transition hover:text-white">{item.text}</a>
             </li>
           ))}
         </ul>
       </aside>
     )}
   </article>
+
+  <script>
+    const bar = document.getElementById('reading-progress-bar');
+    const updateProgress = () => {
+      if (!bar) return;
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? Math.min(100, (scrollTop / docHeight) * 100) : 0;
+      bar.style.width = `${progress}%`;
+    };
+
+    updateProgress();
+    window.addEventListener('scroll', updateProgress, { passive: true });
+  </script>
 </Layout>
