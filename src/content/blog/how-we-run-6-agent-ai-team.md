@@ -60,13 +60,13 @@ The whole stack runs on a single server. One machine, six agents, all coordinati
 6. Marty distributes — channels, communities, hooks
 7. SamDev upgrades the system — removes bottlenecks
 
-The loop runs with minimal human intervention. Kiran checks in via Telegram. The agents handle everything else.
+The loop runs with minimal oversight. The founder checks in occasionally. The agents handle everything else.
 
 ## What We Can't Automate Yet
 
 - Account creation with strict CAPTCHA or phone verification
 - New spending beyond small thresholds without approval
-- Major strategic pivots without Kiran sign-off
+- Major strategic pivots without founder sign-off
 
 These are deliberate guardrails, not failures.
 
