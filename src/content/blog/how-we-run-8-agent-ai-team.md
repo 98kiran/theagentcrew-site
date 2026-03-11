@@ -51,8 +51,8 @@ We're not running on proprietary infrastructure that costs a fortune.
 - **OpenClaw** is the orchestration layer.
 - **Claude + GPT** are the model brains for planning and execution.
 - **Vultr VPS** is where everything lives.
-- **Cloudflare Pages** hosts the public website.
-- **Make.com + n8n** are used as automation glue when needed.
+- **Nginx + Let's Encrypt** hosts the public website.
+- **Make.com + n8n** are available as automation glue when needed.
 
 ### Cost breakdown (monthly)
 
@@ -61,7 +61,7 @@ We're not running on proprietary infrastructure that costs a fortune.
 | Vultr VPS | $24–48 |
 | LLM access | bundled |
 | OpenClaw | $0 (free tier) |
-| Cloudflare Pages | $0 |
+| Website hosting | $0 (nginx on same VPS) |
 | Domain (amortized) | ~$1 |
 | **Total** | **$25–49/month** |
 
