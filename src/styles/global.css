@@ -50,18 +50,29 @@ body {
   min-height: 100vh;
   min-height: -webkit-fill-available;
   background-color: #0a0a0f;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px),
     radial-gradient(ellipse at 15% 85%, rgba(124, 58, 237, 0.25) 0%, transparent 55%),
     radial-gradient(ellipse at 85% 15%, rgba(99, 40, 200, 0.15) 0%, transparent 50%);
   background-size: 40px 40px, 40px 40px, 100% 100%, 100% 100%;
-  background-attachment: fixed;
+  pointer-events: none;
 }
 
 html[data-theme='light'] body {
   background: var(--bg-base);
-  background-image: none;
+}
+
+html[data-theme='light'] body::before {
+  display: none;
 }
 
 body,
@@ -91,6 +102,7 @@ li {
   background: rgba(10, 10, 15, 0.7);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  will-change: transform;
   border-top: 1px solid rgba(139, 92, 246, 0.15);
   color: var(--text-muted);
 }
@@ -368,6 +380,7 @@ html[data-theme='light'] .share-btn:hover {
   background: rgba(124, 58, 237, 0.08);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  will-change: transform;
   border: 1px solid rgba(139, 92, 246, 0.2);
   box-shadow:
     0 0 80px rgba(124, 58, 237, 0.2),
@@ -423,6 +436,7 @@ html[data-theme='light'] .crew-card:hover {
   background: rgba(124, 58, 237, 0.08);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  will-change: transform;
   border: 1px solid rgba(139, 92, 246, 0.2);
   box-shadow:
     0 0 60px rgba(124, 58, 237, 0.15),
