@@ -296,6 +296,24 @@ html[data-theme='light'] .homepage-hero-subtext {
   color: #334155 !important;
 }
 
+html[data-theme='light'] .origin-card {
+  background: white;
+  border-color: #ddd6fe;
+}
+
+html[data-theme='light'] .origin-card p,
+html[data-theme='light'] .origin-card h2 {
+  color: #1e293b;
+}
+
+html[data-theme='light'] .origin-card .origin-label {
+  color: #7c3aed;
+}
+
+html[data-theme='light'] .origin-card .origin-emphasis {
+  color: #6d28d9;
+}
+
 .blog-post-hero {
   box-shadow: 0 8px 20px rgba(15, 23, 42, 0.14);
 }
