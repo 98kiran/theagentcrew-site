@@ -315,6 +315,7 @@ html[data-theme='light'] .share-btn:hover {
   background: linear-gradient(135deg, #ffffff 0%, #c4b5fd 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 20px rgba(167, 139, 250, 0.4));
 }
 
 .homepage-hero-card {
@@ -322,7 +323,10 @@ html[data-theme='light'] .share-btn:hover {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(139, 92, 246, 0.2);
-  box-shadow: 0 4px 48px rgba(124, 58, 237, 0.15), inset 0 0 0 1px rgba(255,255,255,0.04);
+  box-shadow:
+    0 0 80px rgba(124, 58, 237, 0.2),
+    0 4px 48px rgba(124, 58, 237, 0.15),
+    inset 0 0 0 1px rgba(255,255,255,0.04);
 }
 
 .homepage-hero-subtext {
@@ -351,12 +355,33 @@ html[data-theme='light'] .homepage-hero-subtext {
   color: #334155 !important;
 }
 
+.crew-card {
+  transition: all 0.2s ease;
+}
+
+.crew-card:hover {
+  box-shadow: 0 0 24px rgba(124, 58, 237, 0.2);
+  border-color: rgba(139, 92, 246, 0.4);
+}
+
+html[data-theme='light'] .hero-title-gradient {
+  filter: none;
+}
+
+html[data-theme='light'] .crew-card:hover {
+  box-shadow: none;
+  border-color: var(--border) !important;
+}
+
 .origin-card {
   background: rgba(124, 58, 237, 0.08);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(139, 92, 246, 0.2);
-  box-shadow: 0 4px 32px rgba(124, 58, 237, 0.12), inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  box-shadow:
+    0 0 60px rgba(124, 58, 237, 0.15),
+    0 4px 32px rgba(124, 58, 237, 0.12),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
 }
 
 .origin-card h2 {
