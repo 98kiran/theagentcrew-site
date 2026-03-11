@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 
 export const prerender = false;
 
-const apiKey = import.meta.env.CLAWMART_API_KEY || process.env.CLAWMART_API_KEY;
+const apiKey = process.env.CLAWMART_API_KEY || import.meta.env.CLAWMART_API_KEY;
 
 interface Listing {
   id?: string | number;
@@ -110,9 +110,8 @@ if (!apiKey) {
       const payload = await response.json();
       const data = Array.isArray(payload) ? payload : (payload?.data?.listings ?? payload?.data ?? payload?.listings ?? []);
       const rawListings = Array.isArray(data) ? data : [];
-      const knownProducts = new Set(Object.keys(featureMap));
 
-      listings = rawListings.filter((item: Listing) => item?.status === 'active' && knownProducts.has(getName(item)));
+      listings = rawListings.filter((item: Listing) => item && item?.status !== 'draft' && item?.status !== 'archived');
     }
   } catch {
     fetchError = 'Unable to reach Claw Mart right now. Please try again soon.';
@@ -127,7 +126,25 @@ const sortedListings = [...listings].sort((a, b) => {
   return aPrice - bPrice;
 });
 
-const getFeatures = (listing: Listing) => featureMap[getName(listing)] ?? [];
+const genericFeatures = (listing: Listing) => {
+  const description = listing.description?.trim();
+  const tagline = listing.tagline?.trim();
+
+  const dynamic = [
+    description ? description.slice(0, 110) : '',
+    tagline ? tagline.slice(0, 110) : '',
+  ].filter(Boolean);
+
+  const defaults = [
+    'Built by The Agent Crew for practical workflows',
+    'Simple setup with immediate value',
+    'Works with your current OpenClaw environment',
+  ];
+
+  return [...dynamic, ...defaults].slice(0, 3);
+};
+
+const getFeatures = (listing: Listing) => featureMap[getName(listing)] ?? genericFeatures(listing);
 ---
 
 <Layout
