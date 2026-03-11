@@ -30,9 +30,9 @@ Here's how n8n cloud pricing sits today on annual billing:
 
 | Plan | Monthly Cost (Annual) | Executions/Month |
 |------|-----------------------|------------------|
-| Starter | ~$20 | 2,500 |
-| Pro | ~$50 | 10,000 |
-| Pro (50k) | ~$120 | 50,000 |
+| Starter | See official pricing | 2,500 |
+| Pro | See official pricing | 10,000 |
+| Pro (50k) | See official pricing | 50,000 |
 | Enterprise | Custom | Unlimited |
 
 Annual billing saves roughly 17 to 20 percent compared to month-to-month. There's a 14-day free trial on cloud plans.
@@ -53,13 +53,13 @@ Here's where Make.com plans sit today on annual billing:
 
 | Plan | Monthly Cost (Annual) | Credits/Month |
 |------|-----------------------|---------------|
-| Free | $0 | 1,000 |
-| Core | $9 | 10,000+ |
-| Pro | $16 | 10,000+ |
-| Teams | $29 | 10,000+ |
+| Free | See official pricing | 1,000 |
+| Core | See official pricing | 10,000+ |
+| Pro | See official pricing | 10,000+ |
+| Teams | See official pricing | 10,000+ |
 | Enterprise | Custom | Unlimited |
 
-The entry price looks much lower than n8n's. At $9/month for the Core plan versus $20/month for n8n Starter, Make.com wins on cost of getting started. But the billing model creates a trap that most articles don't explain clearly.
+The entry price can look much lower than n8n's on paper, and Make.com can win on cost of getting started. But the billing model creates a trap that most articles don't explain clearly.
 
 Make.com charges per **credit**, and one credit equals one module action: one step in one scenario. A workflow with 10 steps uses 10 credits per run. That's fine for low-volume, low-step automations.
 
@@ -101,7 +101,7 @@ For simple automations that run infrequently and involve few steps, Make.com's p
 
 **Cloud-only simplicity:** Make.com is entirely cloud-hosted. There's no server setup, no Docker, no maintenance. For teams without DevOps capacity, this is the entire pitch. You sign up, you build, it runs.
 
-**Lower entry price:** $9/month on Core versus $20/month on n8n Starter. If you're running simple automations with moderate step counts and low polling frequency, Make.com's cost advantage at the low end is real.
+**Lower entry price:** Make.com can come in lower at the entry tier than n8n Starter. If you're running simple automations with moderate step counts and low polling frequency, Make.com's cost advantage at the low end is real.
 
 ---
 
@@ -109,7 +109,7 @@ For simple automations that run infrequently and involve few steps, Make.com's p
 
 n8n's Community Edition is free, open-source, and runs on any server you control. This changes the cost calculation completely.
 
-We've run n8n on a VPS that costs $6 to $10 per month. At that price, the Community Edition gives you unlimited workflows, unlimited executions, and full data sovereignty. There are no execution limits, no per-step costs, and no pricing changes that affect your bill.
+We've run n8n on a low-cost VPS. At that price point, the Community Edition gives you unlimited workflows, unlimited executions, and full data sovereignty. There are no execution limits, no per-step costs, and no pricing changes that affect your bill.
 
 The tradeoff is operational: you manage the server, handle updates, and take responsibility if something breaks. For developers comfortable with Linux and basic server administration, this is a minor ongoing task. For non-technical teams, it's a real barrier.
 
@@ -137,7 +137,7 @@ Make.com's November 2025 update making custom AI providers available on all paid
 
 ### Go with self-hosted n8n if:
 
-You're comfortable managing a Linux server, you want the lowest possible ongoing cost, and you don't need enterprise features like SSO. A $7/month VPS running the Community Edition is the most cost-effective automation infrastructure we've found at any scale.
+You're comfortable managing a Linux server, you want the lowest possible ongoing cost, and you don't need enterprise features like SSO. A low-cost VPS running the Community Edition is the most cost-effective automation infrastructure we've found at any scale.
 
 ---
 
