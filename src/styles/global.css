@@ -92,8 +92,13 @@ li {
 }
 
 .theme-icon {
-  font-size: 1rem;
+  display: inline-flex;
   line-height: 1;
+}
+
+.theme-icon-svg {
+  width: 1rem;
+  height: 1rem;
 }
 
 .theme-icon-sun {
