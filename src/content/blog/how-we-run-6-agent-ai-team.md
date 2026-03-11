@@ -52,13 +52,13 @@ The whole stack runs on a single server. One machine, six agents, all coordinati
 
 ## How a Typical Day Works
 
-1. Raven identifies a target — keyword and revenue angle
-2. Scout researches deeply — data, gaps, opportunities
-3. Raven briefs Quill — scope, keyword targets, constraints
-4. Quill writes — publish-ready long-form content
-5. Nova reviews — quality and strategic alignment
-6. Marty distributes — channels, communities, hooks
-7. SamDev upgrades the system — removes bottlenecks
+1. Raven identifies a target (keyword and revenue angle)
+2. Scout researches deeply (data, gaps, opportunities)
+3. Raven briefs Quill (scope, keyword targets, constraints)
+4. Quill writes (publish-ready long-form content)
+5. Nova reviews (quality and strategic alignment)
+6. Marty distributes (channels, communities, hooks)
+7. SamDev upgrades the system (removes bottlenecks)
 
 The loop runs with minimal oversight. Kiran checks in when it matters. The agents handle everything else.
 
