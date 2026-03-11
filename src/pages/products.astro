@@ -19,6 +19,34 @@ interface Listing {
   slug?: string;
 }
 
+const featureMap: Record<string, string[]> = {
+  'Wake Up to Finished Work': [
+    '6-agent system pre-configured',
+    'Runs overnight autonomously',
+    'Ready to deploy in minutes',
+  ],
+  'Your AI Revenue GM': [
+    'Tracks revenue signals 24/7',
+    'Flags opportunities automatically',
+    'No manual monitoring needed',
+  ],
+  'Ship to Production': [
+    'Full CI/CD agent workflow',
+    'Deploy without touching terminal',
+    'Error detection built in',
+  ],
+  'The Coordination Layer': [
+    'Multi-agent OS architecture',
+    'One agent routes everything',
+    'No context drift between agents',
+  ],
+  'Free Multi-Agent Starter Kit': [
+    '4 core config files included',
+    'Works with any OpenClaw setup',
+    'Zero cost to start',
+  ],
+};
+
 const toNumber = (value: unknown) => {
   if (typeof value === 'number') return value;
   if (typeof value === 'string') {
@@ -36,6 +64,21 @@ const toDollars = (listing: Listing) => {
   if (!Number.isFinite(amount)) return 0;
 
   return amount > 1000 ? amount / 100 : amount;
+};
+
+const getName = (listing: Listing) => listing.name || listing.title || 'Untitled Product';
+const getTagline = (listing: Listing) => listing.tagline || listing.description || 'Built by The Agent Crew.';
+const getUrl = (listing: Listing) => listing.publicUrl || listing.public_url || '#';
+
+const formatPrice = (listing: Listing) => {
+  const amount = toDollars(listing);
+  if (amount === 0) return 'Free';
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 2,
+  }).format(amount);
 };
 
 let listings: Listing[] = [];
@@ -58,49 +101,29 @@ if (!apiKey) {
       const data = Array.isArray(payload) ? payload : (payload?.data?.listings ?? payload?.data ?? payload?.listings ?? []);
       const rawListings = Array.isArray(data) ? data : [];
 
-      listings = rawListings
-        .filter((item: Listing) => item?.status === 'active')
-        .sort((a: Listing, b: Listing) => {
-          const aPrice = toDollars(a);
-          const bPrice = toDollars(b);
-          const aFree = aPrice === 0;
-          const bFree = bPrice === 0;
-
-          if (aFree && !bFree) return -1;
-          if (!aFree && bFree) return 1;
-          return aPrice - bPrice;
-        });
+      listings = rawListings.filter((item: Listing) => item?.status === 'active');
     }
   } catch {
     fetchError = 'Unable to reach Claw Mart right now. Please try again soon.';
   }
 }
 
-const formatPrice = (listing: Listing) => {
-  const amount = toDollars(listing);
-  if (amount === 0) return 'Free';
-  return new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 2,
-  }).format(amount);
-};
+const freeListing = listings.find((listing) => toDollars(listing) === 0);
+const paidListings = listings
+  .filter((listing) => toDollars(listing) > 0)
+  .sort((a, b) => toDollars(a) - toDollars(b));
 
-const getName = (listing: Listing) => listing.name || listing.title || 'Untitled Product';
-const getTagline = (listing: Listing) => listing.tagline || listing.description || 'Built by The Agent Crew.';
-const getUrl = (listing: Listing) => listing.publicUrl || listing.public_url || '#';
+const getFeatures = (listing: Listing) => featureMap[getName(listing)] ?? ['Built by agents for real workflows', 'Clear setup path included', 'Made for daily shipping'];
 ---
 
 <Layout
   title="Products | The Agent Crew"
   description="Explore The Agent Crew tool stack available on Claw Mart."
 >
-  <section class="homepage-hero-card hero-glow-card space-y-5 rounded-2xl border border-violet-500/30 bg-gradient-to-br from-violet-900/20 to-dark-surface p-10">
-    <p class="text-sm font-semibold uppercase tracking-wider text-violet-300">The Stack</p>
-    <h1 class="hero-title-gradient max-w-4xl text-4xl font-extrabold leading-tight md:text-5xl">Our Tools</h1>
-    <p class="homepage-hero-subtext max-w-2xl text-lg text-slate-300">
-      Every product we ship in one place: starter resources, paid playbooks, and launch-week specials.
+  <section class="hero-glow-card space-y-5 rounded-2xl border border-violet-500/30 bg-gradient-to-br from-violet-900/20 to-dark-surface p-10">
+    <h1 class="hero-title-gradient max-w-4xl text-4xl font-extrabold leading-tight md:text-6xl">Tools built by agents, for builders</h1>
+    <p class="max-w-2xl text-lg text-slate-300">
+      Every product we ship comes from running these systems ourselves. No fluff.
     </p>
   </section>
 
@@ -109,42 +132,82 @@ const getUrl = (listing: Listing) => listing.publicUrl || listing.public_url || 
       {fetchError}
     </section>
   ) : (
-    <section class="mt-10 grid gap-6 md:grid-cols-2">
-      {listings.map((listing) => {
-        const price = toDollars(listing);
-        const isFree = price === 0;
-        const isLaunchWeek = price === 19;
+    <section class="mt-10 space-y-8">
+      {freeListing && (
+        <article class="rounded-2xl border border-violet-500/35 bg-white p-8 shadow-sm dark:bg-dark-card">
+          <div class="mb-4 flex flex-wrap items-center gap-2">
+            <span class="rounded-full border border-violet-500/45 bg-violet-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-violet-600 dark:text-violet-300">
+              Start here
+            </span>
+            <span class="rounded-full border border-violet-500/45 bg-violet-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-violet-600 dark:text-violet-300">
+              Free
+            </span>
+          </div>
 
-        return (
-          <article class="rounded-xl border border-slate-800 bg-dark-card p-6">
-            <div class="mb-4 flex flex-wrap items-center gap-2">
-              {isFree && (
-                <span class="rounded-full border border-violet-500/40 bg-violet-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-violet-200">
-                  Free
-                </span>
-              )}
-              {isLaunchWeek && (
-                <span class="rounded-full border border-amber-300/35 bg-amber-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-amber-100">
-                  Launch Week
-                </span>
-              )}
-            </div>
+          <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white">{getName(freeListing)}</h2>
+          <p class="mt-3 text-5xl font-black text-violet-600 dark:text-violet-300">{formatPrice(freeListing)}</p>
+          <p class="mt-3 italic text-slate-600 dark:text-slate-300">{getTagline(freeListing)}</p>
 
-            <h2 class="text-2xl font-extrabold">{getName(listing)}</h2>
-            <p class="mt-2 text-3xl font-black text-violet-300">{formatPrice(listing)}</p>
-            <p class="mt-4 text-slate-300">{getTagline(listing)}</p>
+          <ul class="mt-6 space-y-2 text-sm text-slate-700 dark:text-slate-300">
+            {getFeatures(freeListing).map((feature) => (
+              <li class="flex items-start gap-2">
+                <span class="mt-1 text-violet-500">•</span>
+                <span>{feature}</span>
+              </li>
+            ))}
+          </ul>
 
-            <a
-              href={getUrl(listing)}
-              class="mt-6 inline-flex items-center justify-center rounded-lg border border-violet-500/40 bg-violet-500/10 px-4 py-2 text-sm font-semibold text-violet-100 hover:border-violet-500/60 hover:bg-violet-500/20"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Get it on Claw Mart
-            </a>
-          </article>
-        );
-      })}
+          <a
+            href={getUrl(freeListing)}
+            class="mt-7 inline-flex w-full items-center justify-center rounded-xl bg-violet-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-violet-500"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Get it on Claw Mart
+          </a>
+        </article>
+      )}
+
+      <div class="grid gap-6 md:grid-cols-2">
+        {paidListings.map((listing) => {
+          const price = toDollars(listing);
+          const isLaunchWeek = price === 19;
+
+          return (
+            <article class="flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-dark-card">
+              <div class="mb-4 flex flex-wrap items-center gap-2">
+                {isLaunchWeek && (
+                  <span class="rounded-full border border-amber-300/50 bg-amber-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-amber-700 dark:text-amber-200">
+                    Launch Week
+                  </span>
+                )}
+              </div>
+
+              <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white">{getName(listing)}</h2>
+              <p class="mt-3 text-5xl font-black text-violet-600 dark:text-violet-300">{formatPrice(listing)}</p>
+              <p class="mt-3 italic text-slate-600 dark:text-slate-300">{getTagline(listing)}</p>
+
+              <ul class="mt-6 space-y-2 text-sm text-slate-700 dark:text-slate-300">
+                {getFeatures(listing).map((feature) => (
+                  <li class="flex items-start gap-2">
+                    <span class="mt-1 text-violet-500">•</span>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <a
+                href={getUrl(listing)}
+                class="mt-7 inline-flex w-full items-center justify-center rounded-xl bg-violet-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-violet-500"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Get it on Claw Mart
+              </a>
+            </article>
+          );
+        })}
+      </div>
     </section>
   )}
 </Layout>
