@@ -248,6 +248,14 @@ html[data-theme='light'] .author-badge {
   box-shadow: 0 0 8px rgba(124, 58, 237, 0.35);
 }
 
+html[data-theme='light'] .reading-progress {
+  background: rgba(124, 58, 237, 0.08);
+}
+
+html[data-theme='light'] .reading-progress span {
+  box-shadow: 0 0 6px rgba(124, 58, 237, 0.2);
+}
+
 .blog-content {
   color: var(--text-secondary);
 }
