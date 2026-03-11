@@ -76,17 +76,7 @@ const fallbackTaglines: Record<string, string> = {
   'The Coordination Layer': 'One agent routes everything. Zero context drift.',
 };
 
-const getTagline = (listing: Listing) => {
-  const name = getName(listing);
-  const rawTagline = (listing.tagline || listing.description || '').trim();
-  const isGeneric = rawTagline.toLowerCase() === 'built by the agent crew' || rawTagline.toLowerCase() === 'built by the agent crew.';
-
-  if (!rawTagline || isGeneric) {
-    return fallbackTaglines[name] || 'Built by The Agent Crew.';
-  }
-
-  return rawTagline;
-};
+const getTagline = (listing: Listing) => fallbackTaglines[getName(listing)] || '';
 
 const getUrl = (listing: Listing) => listing.publicUrl || listing.public_url || '#';
 
@@ -120,20 +110,24 @@ if (!apiKey) {
       const payload = await response.json();
       const data = Array.isArray(payload) ? payload : (payload?.data?.listings ?? payload?.data ?? payload?.listings ?? []);
       const rawListings = Array.isArray(data) ? data : [];
+      const knownProducts = new Set(Object.keys(featureMap));
 
-      listings = rawListings.filter((item: Listing) => item?.status === 'active');
+      listings = rawListings.filter((item: Listing) => item?.status === 'active' && knownProducts.has(getName(item)));
     }
   } catch {
     fetchError = 'Unable to reach Claw Mart right now. Please try again soon.';
   }
 }
 
-const freeListing = listings.find((listing) => toDollars(listing) === 0);
-const paidListings = listings
-  .filter((listing) => toDollars(listing) > 0)
-  .sort((a, b) => toDollars(a) - toDollars(b));
+const sortedListings = [...listings].sort((a, b) => {
+  const aPrice = toDollars(a);
+  const bPrice = toDollars(b);
+  if (aPrice === 0 && bPrice !== 0) return -1;
+  if (aPrice !== 0 && bPrice === 0) return 1;
+  return aPrice - bPrice;
+});
 
-const getFeatures = (listing: Listing) => featureMap[getName(listing)] ?? ['Built by agents for real workflows', 'Clear setup path included', 'Made for daily shipping'];
+const getFeatures = (listing: Listing) => featureMap[getName(listing)] ?? [];
 ---
 
 <Layout
@@ -152,66 +146,42 @@ const getFeatures = (listing: Listing) => featureMap[getName(listing)] ?? ['Buil
       {fetchError}
     </section>
   ) : (
-    <section class="mt-10 space-y-8">
-      {freeListing && (
-        <article class="rounded-2xl border border-violet-500/35 bg-dark-card p-8 shadow-sm">
-          <div class="mb-4 flex flex-wrap items-center gap-2">
-            <span class="rounded-full border border-violet-500/45 bg-violet-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-violet-600 dark:text-violet-300">
-              Start here
-            </span>
-            <span class="rounded-full border border-violet-500/45 bg-violet-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-violet-600 dark:text-violet-300">
-              Free
-            </span>
-          </div>
-
-          <h2 class="text-3xl font-extrabold text-white">{getName(freeListing)}</h2>
-          <p class="mt-3 text-5xl font-black text-violet-600 dark:text-violet-300">{formatPrice(freeListing)}</p>
-          <p class="mt-3 italic text-slate-600 dark:text-slate-300">{getTagline(freeListing)}</p>
-
-          <ul class="mt-6 space-y-2 text-sm text-slate-700 dark:text-slate-300">
-            {getFeatures(freeListing).map((feature) => (
-              <li class="flex items-start gap-2">
-                <span class="mt-1 text-violet-500">•</span>
-                <span class="text-slate-700 dark:text-slate-300">{feature}</span>
-              </li>
-            ))}
-          </ul>
-
-          <a
-            href={getUrl(freeListing)}
-            class="mt-7 inline-flex w-full items-center justify-center rounded-xl bg-violet-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-violet-500"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Get it on Claw Mart
-          </a>
-        </article>
-      )}
-
+    <section class="mt-10">
       <div class="grid gap-6 md:grid-cols-2">
-        {paidListings.map((listing) => {
+        {sortedListings.map((listing) => {
           const price = toDollars(listing);
+          const isFree = price === 0;
           const isLaunchWeek = price === 19;
 
           return (
-            <article class="flex h-full flex-col rounded-2xl border border-slate-800 bg-dark-card p-8 shadow-sm">
+            <article class="crew-card flex h-full min-h-[460px] flex-col rounded-2xl border border-slate-800 bg-dark-card p-8 shadow-sm transition">
               <div class="mb-4 flex flex-wrap items-center gap-2">
+                {isFree && (
+                  <span class="rounded-full border border-violet-500/45 bg-violet-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-violet-200">
+                    Start here
+                  </span>
+                )}
+                {isFree && (
+                  <span class="rounded-full border border-violet-500/45 bg-violet-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-violet-200">
+                    Free
+                  </span>
+                )}
                 {isLaunchWeek && (
-                  <span class="rounded-full border border-amber-300/50 bg-amber-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-amber-700 dark:text-amber-200">
+                  <span class="rounded-full border border-amber-300/50 bg-amber-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-amber-200">
                     Launch Week
                   </span>
                 )}
               </div>
 
               <h2 class="text-3xl font-extrabold text-white">{getName(listing)}</h2>
-              <p class="mt-3 text-5xl font-black text-violet-600 dark:text-violet-300">{formatPrice(listing)}</p>
-              <p class="mt-3 italic text-slate-600 dark:text-slate-300">{getTagline(listing)}</p>
+              <p class="mt-3 text-5xl font-black text-violet-400">{formatPrice(listing)}</p>
+              <p class="mt-3 italic text-slate-300">{getTagline(listing)}</p>
 
-              <ul class="mt-6 space-y-2 text-sm text-slate-700 dark:text-slate-300">
+              <ul class="mt-6 space-y-2 text-sm">
                 {getFeatures(listing).map((feature) => (
                   <li class="flex items-start gap-2">
-                    <span class="mt-1 text-violet-500">•</span>
-                    <span class="text-slate-700 dark:text-slate-300">{feature}</span>
+                    <span class="mt-1 text-violet-400">•</span>
+                    <span class="text-slate-300">{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -222,7 +192,7 @@ const getFeatures = (listing: Listing) => featureMap[getName(listing)] ?? ['Buil
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Get it on Claw Mart
+                {isFree ? 'Start here' : 'Get it on Claw Mart'}
               </a>
             </article>
           );
