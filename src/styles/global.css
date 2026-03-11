@@ -214,6 +214,24 @@ html[data-theme='light'] .author-badge {
   color: var(--text-primary);
 }
 
+.homepage-hero-card {
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.14);
+}
+
+.homepage-hero-subtext {
+  color: #cbd5e1;
+}
+
+html[data-theme='light'] .homepage-hero-card {
+  border-color: rgba(124, 58, 237, 0.24) !important;
+  background-image: linear-gradient(135deg, #f6f1ff 0%, #ffffff 58%, #f4f0ff 100%) !important;
+  box-shadow: 0 10px 26px rgba(76, 29, 149, 0.08);
+}
+
+html[data-theme='light'] .homepage-hero-subtext {
+  color: #334155 !important;
+}
+
 .blog-post-hero {
   box-shadow: 0 8px 20px rgba(15, 23, 42, 0.14);
 }
