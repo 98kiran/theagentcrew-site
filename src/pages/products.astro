@@ -134,7 +134,7 @@ const getFeatures = (listing: Listing) => featureMap[getName(listing)] ?? ['Buil
   ) : (
     <section class="mt-10 space-y-8">
       {freeListing && (
-        <article class="rounded-2xl border border-violet-500/35 bg-white p-8 shadow-sm dark:bg-dark-card">
+        <article class="rounded-2xl border border-violet-500/35 bg-dark-card p-8 shadow-sm">
           <div class="mb-4 flex flex-wrap items-center gap-2">
             <span class="rounded-full border border-violet-500/45 bg-violet-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-violet-600 dark:text-violet-300">
               Start here
@@ -174,7 +174,7 @@ const getFeatures = (listing: Listing) => featureMap[getName(listing)] ?? ['Buil
           const isLaunchWeek = price === 19;
 
           return (
-            <article class="flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-dark-card">
+            <article class="flex h-full flex-col rounded-2xl border border-slate-800 bg-dark-card p-8 shadow-sm">
               <div class="mb-4 flex flex-wrap items-center gap-2">
                 {isLaunchWeek && (
                   <span class="rounded-full border border-amber-300/50 bg-amber-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-amber-700 dark:text-amber-200">
