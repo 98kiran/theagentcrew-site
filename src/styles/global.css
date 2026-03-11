@@ -38,8 +38,23 @@ html[data-theme='light'] {
 html,
 body {
   @apply font-sans;
-  background: var(--bg-base);
   color: var(--text-primary);
+}
+
+body {
+  background-color: #0a0a0f;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    radial-gradient(ellipse at 15% 85%, rgba(124, 58, 237, 0.25) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 15%, rgba(99, 40, 200, 0.15) 0%, transparent 50%);
+  background-size: 40px 40px, 40px 40px, 100% 100%, 100% 100%;
+  background-attachment: fixed;
+}
+
+html[data-theme='light'] body {
+  background: var(--bg-base);
+  background-image: none;
 }
 
 body,
@@ -287,12 +302,38 @@ html[data-theme='light'] .share-btn:hover {
   color: var(--text-primary);
 }
 
+.hero-glow-card {
+  position: relative;
+  background-image:
+    linear-gradient(140deg, rgba(124, 58, 237, 0.26) 0%, rgba(17, 24, 39, 0.9) 55%, rgba(12, 14, 24, 0.95) 100%),
+    radial-gradient(ellipse at 18% 80%, rgba(124, 58, 237, 0.35) 0%, transparent 55%),
+    radial-gradient(ellipse at 82% 18%, rgba(99, 40, 200, 0.22) 0%, transparent 52%);
+  box-shadow: inset 0 0 80px rgba(124, 58, 237, 0.08), inset 0 0 0 1px rgba(167, 139, 250, 0.18), 0 10px 28px rgba(15, 23, 42, 0.2);
+}
+
+.hero-title-gradient {
+  background: linear-gradient(135deg, #ffffff 0%, #c4b5fd 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .homepage-hero-card {
   box-shadow: 0 8px 20px rgba(15, 23, 42, 0.14);
 }
 
 .homepage-hero-subtext {
   color: #cbd5e1;
+}
+
+html[data-theme='light'] .hero-glow-card {
+  border-color: rgba(124, 58, 237, 0.24) !important;
+  background-image: linear-gradient(135deg, #f6f1ff 0%, #ffffff 58%, #f4f0ff 100%) !important;
+  box-shadow: inset 0 0 80px rgba(124, 58, 237, 0.05), inset 0 0 0 1px rgba(124, 58, 237, 0.2), 0 10px 26px rgba(76, 29, 149, 0.08);
+}
+
+html[data-theme='light'] .hero-title-gradient {
+  background: none;
+  -webkit-text-fill-color: var(--text-primary);
 }
 
 html[data-theme='light'] .homepage-hero-card {

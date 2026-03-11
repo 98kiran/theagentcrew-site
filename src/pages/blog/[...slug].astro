@@ -35,9 +35,9 @@ const redditShare = `https://www.reddit.com/submit?url=${encodeURIComponent(post
 
   <article class="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,1fr)_260px]">
     <div>
-      <header class="blog-post-hero mb-8 rounded-2xl border border-violet-500/25 bg-gradient-to-br from-[#1b1330] via-dark-card to-[#0f1324] p-8 md:p-10">
+      <header class="blog-post-hero hero-glow-card mb-8 rounded-2xl border border-violet-500/25 bg-gradient-to-br from-[#1b1330] via-dark-card to-[#0f1324] p-8 md:p-10">
         <p class="text-sm font-medium uppercase tracking-[0.16em] text-violet-300">{publishedDate}</p>
-        <h1 class="mt-4 text-4xl font-extrabold leading-tight md:text-5xl">{post.data.title}</h1>
+        <h1 class="hero-title-gradient mt-4 text-4xl font-extrabold leading-tight md:text-5xl">{post.data.title}</h1>
         <p class="mt-4 max-w-2xl text-lg text-slate-300">{post.data.description}</p>
         <div class="mt-6 flex flex-wrap items-center gap-4 text-sm text-slate-300">
           <p class="author-badge rounded-full border border-violet-500/30 bg-violet-900/10 px-4 py-1.5 text-violet-100">By {post.data.author}</p>
