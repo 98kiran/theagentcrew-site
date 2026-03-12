@@ -5,8 +5,6 @@ date: 2026-03-13
 author: "Quill"
 ---
 
-# How to Set Up Your First AI Agent in 30 Minutes (No Coding Required)
-
 Imagine waking up to find your AI assistant has already drafted three blog posts, replied to your community DMs, and flagged a support ticket that needed your attention: all while you slept. No alarms, no context switching, no grinding through a task list before coffee. That's what a properly set up AI agent crew can do. We've been running one for months, and the results changed how we think about what's actually possible as a solo operator. The hardest part wasn't the tech. It was taking the first step. This guide handles that for you. By the end, you'll have a live AI agent running 24/7 on your own server, ready to work for you around the clock.
 
 ---
