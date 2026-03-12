@@ -589,26 +589,4 @@ html[data-theme='light'] .reading-progress span {
   color: var(--text-primary);
 }
 
-@media (max-width: 768px) {
-  .blog-post-layout {
-    padding-left: 1rem;
-    padding-right: 1rem;
-    overflow-x: hidden;
-    max-width: 100%;
-    box-sizing: border-box;
-  }
 
-  .blog-post-layout .prose,
-  .blog-post-layout .blog-content {
-    padding-left: 1rem;
-    padding-right: 1rem;
-    overflow-x: hidden;
-    max-width: 100%;
-    box-sizing: border-box;
-  }
-
-  .blog-content {
-    overflow-wrap: anywhere;
-    word-break: break-word;
-  }
-}
