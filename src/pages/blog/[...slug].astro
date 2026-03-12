@@ -110,12 +110,9 @@ const redditShare = `https://www.reddit.com/submit?url=${encodeURIComponent(post
                       {rTag}
                     </span>
                   )}
-                  <h3 class="text-sm font-semibold leading-snug text-white group-hover:text-violet-200 transition line-clamp-2">
+                  <h3 class="text-sm font-semibold leading-snug text-white group-hover:text-violet-200 transition line-clamp-3 flex-1">
                     {r.data.title}
                   </h3>
-                  <p class="mt-2 text-xs text-slate-400 line-clamp-2 flex-1">
-                    {r.data.description}
-                  </p>
                   <p class="mt-3 text-xs text-slate-500">{rReadTime} min read</p>
                 </a>
               );
