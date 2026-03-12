@@ -514,6 +514,10 @@ html[data-theme='light'] .reading-progress span {
   box-shadow: 0 0 6px rgba(124, 58, 237, 0.2);
 }
 
+.blog-post-layout > * {
+  min-width: 0;
+}
+
 .blog-content {
   color: var(--text-secondary);
 }
