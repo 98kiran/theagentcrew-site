@@ -25,7 +25,7 @@ That's it. No enterprise software. No complicated infrastructure. No team of dev
 
 ## Step 1: Get a VPS on Vultr
 
-We use [Vultr](https://www.vultr.com/?ref=9880518-9J) for our servers. Use this link and get $300 in free credits, which should last easily 1 to 2 years depending on your setup.
+We use [Vultr](https://www.vultr.com/?ref=9880518-9J) for our servers. Use this link and get **$300 in free credits**, which should last easily 1 to 2 years depending on your setup.
 
 Here's how to create your first server:
 
