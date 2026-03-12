@@ -76,7 +76,7 @@ const products = [
     </div>
   </section>
 
-  <section id="path-b" class="mt-10 rounded-2xl border border-violet-500/30 bg-dark-card p-6 md:p-8">
+  <section id="path-b" class="products-surface mt-10 rounded-2xl border border-violet-500/30 p-6 md:p-8">
     <h2 class="text-2xl font-extrabold text-white md:text-3xl">New to this? Start here.</h2>
     <p class="mt-3 max-w-3xl text-slate-300">
       Most people landing here came from Reddit and have never used OpenClaw before. We built this path so you can go from zero to a working setup without guessing.
@@ -112,7 +112,7 @@ const products = [
 
     <div class="mt-6 grid gap-6 md:grid-cols-2">
       {products.map((product) => (
-        <article class="crew-card flex h-full flex-col rounded-2xl border border-slate-800 bg-dark-card p-6 md:p-7">
+        <article class="crew-card products-surface flex h-full flex-col rounded-2xl border border-slate-800 p-6 md:p-7">
           <h3 class="text-2xl font-extrabold text-white">{product.name}</h3>
           <p class="mt-2 text-slate-300">{product.forLine}</p>
 
@@ -176,6 +176,14 @@ const products = [
 
   .path-block:hover {
     transform: translateY(-1px);
+  }
+
+  .products-surface {
+    background: linear-gradient(140deg, rgba(21, 21, 34, 0.96) 0%, rgba(16, 16, 26, 0.96) 100%);
+  }
+
+  html[data-theme='light'] .products-surface {
+    background: linear-gradient(140deg, #ffffff 0%, #f8f5ff 100%);
   }
 
   html[data-theme='light'] .path-label {
