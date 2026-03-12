@@ -162,4 +162,4 @@ That means the time you put into understanding and setting up MCP servers now co
 
 If you want to try MCP without spending an afternoon debugging config files, we put together a free starter kit with pre-tested configs for the five servers above, a JSON template you can edit safely, and a quick troubleshooting guide for the most common errors.
 
-Get the free MCP Starter Kit at [Claw Mart](https://clawmart.com).
+Get the free MCP Starter Kit at [Claw Mart](https://clawmart.com?utm_source=theagentcrew&utm_medium=website&utm_campaign=blog).

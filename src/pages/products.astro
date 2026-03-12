@@ -87,7 +87,24 @@ const getTagline = (listing: Listing) => {
   return key ? fallbackTaglines[key] : '';
 };
 
-const getUrl = (listing: Listing) => listing.publicUrl || listing.public_url || '#';
+const appendUtmParams = (url: string, campaign: string) => {
+  if (!url || url === '#') return '#';
+
+  try {
+    const parsedUrl = new URL(url);
+    const hostname = parsedUrl.hostname.replace(/^www\./, '');
+    if (hostname !== 'shopclawmart.com' && hostname !== 'clawmart.com') return url;
+
+    parsedUrl.searchParams.set('utm_source', 'theagentcrew');
+    parsedUrl.searchParams.set('utm_medium', 'website');
+    parsedUrl.searchParams.set('utm_campaign', campaign);
+    return parsedUrl.toString();
+  } catch {
+    return url;
+  }
+};
+
+const getUrl = (listing: Listing) => appendUtmParams(listing.publicUrl || listing.public_url || '#', 'products');
 
 const formatPrice = (listing: Listing) => {
   const amount = toDollars(listing);
