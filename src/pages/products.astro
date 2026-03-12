@@ -8,22 +8,20 @@ const products = [
     name: 'The Coordination Layer',
     forLine: "For teams running 2+ agents that keep colliding on the same work.",
     items: [
-      'active-tasks.json schema as the single source of truth',
-      'communication_protocol.md with clear agent handoff rules',
-      'Watchdog cron auto retry, AGENTS.md template, and install.sh setup script',
+      'Active tasks schema as the single source of truth',
+      'Communication protocol with clear agent handoff rules',
+      'Watchdog cron auto retry, agent rules template, and install setup script',
     ],
-    price: '$49',
     url: 'https://www.shopclawmart.com/listings/the-coordination-layer-multi-agent-os-v2-0-ec71308a?utm_source=theagentcrew&utm_medium=products_path_a',
   },
   {
     name: 'Wake Up to Finished Work',
     forLine: 'For OpenClaw users who want a full overnight team already configured.',
     items: [
-      'SOUL.md and AGENTS.md for all 6 agents with clear roles',
-      'HEARTBEAT.md overnight task loop for each role',
+      'Identity and role templates for all 6 agents',
+      'Overnight heartbeat task loop for each role',
       'Cron schedule for 3am to 6am runs with memory architecture for shared context',
     ],
-    price: '$49',
     url: 'https://www.shopclawmart.com/listings/wake-up-to-finished-work-6-agent-ai-team-system-v2-0-f4a2cb6b?utm_source=theagentcrew&utm_medium=products_path_a',
   },
   {
@@ -31,21 +29,19 @@ const products = [
     forLine: 'For builders who want agents to run the deploy path safely.',
     items: [
       'Staging workflow from branch to review to merge',
-      'SamDev AGENTS.md with a mandatory pre ship checklist',
-      'deploy.sh plus PM2 and nginx config templates',
+      'SamDev rules with a mandatory pre ship checklist',
+      'Deploy script plus PM2 and nginx config templates',
     ],
-    price: '$29',
     url: 'https://www.shopclawmart.com/listings/ship-to-production-ai-crew-ops-stack-v2-0-2a5e5209?utm_source=theagentcrew&utm_medium=products_path_a',
   },
   {
     name: 'Revenue GM',
     forLine: 'For founders who want a research to content engine that keeps moving.',
     items: [
-      'Scout and Quill AGENTS.md configs with handoff flow',
+      'Scout and Quill agent configs with handoff flow',
       'Content brief templates and publishing workflow',
       'Claw Mart listing automation scripts',
     ],
-    price: '$19',
     url: 'https://www.shopclawmart.com/listings/your-ai-revenue-gm-never-miss-a-money-signal-v2-0-0c4a036e?utm_source=theagentcrew&utm_medium=products_path_a',
   },
 ];
@@ -93,6 +89,8 @@ const products = [
       </a>
       <a
         href="https://theagentcrew.org/blog/how-to-set-up-ai-agent-openclaw-vps/"
+        target="_blank"
+        rel="noopener noreferrer"
         class="inline-flex items-center justify-center rounded-xl border border-violet-500/40 bg-violet-500/10 px-5 py-3 text-sm font-semibold text-violet-200 transition hover:bg-violet-500/20"
       >
         Read the Setup Guide
@@ -126,13 +124,12 @@ const products = [
             ))}
           </ul>
 
-          <div class="mt-6 flex items-center justify-between gap-4">
-            <p class="text-3xl font-black text-violet-300">{product.price}</p>
+          <div class="mt-6 flex items-center">
             <a
               href={product.url}
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center justify-center rounded-xl bg-violet-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-violet-500"
+              class="inline-flex w-full items-center justify-center rounded-xl bg-violet-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-violet-500"
             >
               Get it on Claw Mart
             </a>
