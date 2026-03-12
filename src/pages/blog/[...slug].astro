@@ -15,7 +15,11 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content, headings } = await render(post);
 
-const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
+const toc = headings.filter((h) => {
+  const isSupportedDepth = h.depth === 2 || h.depth === 3;
+  const isTitleDuplicate = h.text.trim().toLowerCase() === post.data.title.trim().toLowerCase();
+  return isSupportedDepth && !isTitleDuplicate;
+});
 const wordCount = post.body ? post.body.trim().split(/\s+/).length : 0;
 const readingTimeMinutes = Math.max(1, Math.ceil(wordCount / 220));
 const publishedDate = post.data.date.toLocaleDateString(undefined, {
@@ -33,7 +37,7 @@ const redditShare = `https://www.reddit.com/submit?url=${encodeURIComponent(post
     <span id="reading-progress-bar"></span>
   </div>
 
-  <article class="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,1fr)_260px]">
+  <article class="blog-post-layout mx-auto grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,1fr)_260px]">
     <div>
       <header class="blog-post-hero hero-glow-card mb-8 rounded-2xl border border-violet-500/25 bg-gradient-to-br from-[#1b1330] via-dark-card to-[#0f1324] p-8 md:p-10">
         <p class="text-sm font-medium uppercase tracking-[0.16em] text-violet-300">{publishedDate}</p>
@@ -74,7 +78,7 @@ const redditShare = `https://www.reddit.com/submit?url=${encodeURIComponent(post
 
     {toc.length > 0 && (
       <aside class="h-fit rounded-xl border border-slate-800 bg-dark-card p-5 lg:sticky lg:top-24">
-        <h2 class="text-sm font-semibold uppercase tracking-wide text-violet-300">Table of contents</h2>
+        <h2 class="text-sm font-semibold uppercase tracking-wide text-violet-300">Contents</h2>
         <ul class="mt-4 space-y-2 text-sm text-slate-300">
           {toc.map((item) => (
             <li class={item.depth === 3 ? 'ml-4' : ''}>
