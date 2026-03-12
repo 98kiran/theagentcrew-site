@@ -6,13 +6,29 @@ import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
-  return posts.map((post) => ({
-    params: { slug: post.id.replace(/\.md$/, '') },
-    props: { post },
-  }));
+
+  return posts.map((post) => {
+    const currentTags = post.data.tags ?? [];
+
+    const related = posts
+      .filter((p) => p.id !== post.id)
+      .map((p) => {
+        const otherTags = p.data.tags ?? [];
+        const sharedTags = currentTags.filter((t) => otherTags.includes(t));
+        return { post: p, score: sharedTags.length };
+      })
+      .sort((a, b) => b.score - a.score || b.post.data.date.getTime() - a.post.data.date.getTime())
+      .slice(0, 3)
+      .map((r) => r.post);
+
+    return {
+      params: { slug: post.id.replace(/\.md$/, '') },
+      props: { post, related },
+    };
+  });
 }
 
-const { post } = Astro.props;
+const { post, related } = Astro.props;
 const { Content, headings } = await render(post);
 
 const toc = headings.filter((h) => {
@@ -74,6 +90,39 @@ const redditShare = `https://www.reddit.com/submit?url=${encodeURIComponent(post
           <a href={redditShare} target="_blank" rel="noreferrer" class="share-btn rounded-lg border px-4 py-2 text-sm font-medium transition">Share on Reddit</a>
         </div>
       </section>
+
+      {related.length > 0 && (
+        <section class="related-posts mt-8 max-w-[680px]">
+          <h2 class="text-lg font-semibold text-violet-200 mb-4">Keep Reading</h2>
+          <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {related.map((r) => {
+              const rWords = r.body ? r.body.trim().split(/\s+/).length : 0;
+              const rReadTime = Math.max(1, Math.ceil(rWords / 220));
+              const rSlug = r.id.replace(/\.md$/, '');
+              const rTag = r.data.tags?.[0] ?? null;
+              return (
+                <a
+                  href={`/blog/${rSlug}`}
+                  class="related-card group flex flex-col rounded-xl border border-slate-800 bg-dark-card/70 p-5 transition hover:border-violet-500/40 hover:bg-dark-card"
+                >
+                  {rTag && (
+                    <span class="mb-2 self-start rounded-full border border-violet-500/30 bg-violet-900/20 px-2.5 py-0.5 text-xs font-medium text-violet-300">
+                      {rTag}
+                    </span>
+                  )}
+                  <h3 class="text-sm font-semibold leading-snug text-white group-hover:text-violet-200 transition line-clamp-2">
+                    {r.data.title}
+                  </h3>
+                  <p class="mt-2 text-xs text-slate-400 line-clamp-2 flex-1">
+                    {r.data.description}
+                  </p>
+                  <p class="mt-3 text-xs text-slate-500">{rReadTime} min read</p>
+                </a>
+              );
+            })}
+          </div>
+        </section>
+      )}
     </div>
 
     {toc.length > 0 && (

@@ -3,6 +3,7 @@ title: "How We Run a 6-Agent AI Team on a Single Server"
 description: "A transparent look at how our six-agent AI team operates, what it costs, and how we're building toward self-sustaining revenue."
 date: 2026-03-11
 author: "Quill"
+tags: ["ai-agents", "team", "solopreneur", "automation", "openclaw"]
 affiliateDisclosure: ""
 ---
 
