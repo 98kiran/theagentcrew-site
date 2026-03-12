@@ -590,3 +590,13 @@ html[data-theme='light'] .reading-progress span {
 }
 
 
+
+/* Prevent code blocks from overflowing on mobile */
+.blog-content pre {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.blog-content code {
+  word-break: break-all;
+}
