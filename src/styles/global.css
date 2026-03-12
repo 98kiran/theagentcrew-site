@@ -592,11 +592,16 @@ html[data-theme='light'] .reading-progress span {
 
 
 /* Prevent code blocks from overflowing on mobile */
-.blog-content pre {
-  overflow-x: auto;
-  max-width: 100%;
+.blog-content pre,
+.astro-code,
+pre.astro-code {
+  overflow-x: auto !important;
+  max-width: 100% !important;
+  white-space: pre !important;
 }
 
-.blog-content code {
-  word-break: break-all;
+/* Prevent the whole page from overflowing due to wide content */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
 }
