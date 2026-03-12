@@ -267,6 +267,10 @@ html[data-theme='light'] .blog-card a:hover {
   color: #6d28d9 !important;
 }
 
+html[data-theme='light'] .toc-link:hover {
+  color: var(--text-primary) !important;
+}
+
 html[data-theme='light'] .author-badge {
   color: #5b21b6;
   background-color: rgba(124, 58, 237, 0.1) !important;

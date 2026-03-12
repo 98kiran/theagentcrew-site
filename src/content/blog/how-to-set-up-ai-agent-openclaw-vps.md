@@ -3,7 +3,6 @@ title: "How to Set Up Your First AI Agent in 30 Minutes (No Coding Required)"
 description: "A plain-English guide for solopreneurs who want an AI crew but don't know where to start. Works on Mac and Windows."
 date: 2026-03-13
 author: "Quill"
-affiliateDisclosure: "This article includes affiliate links. If you sign up through them, we may earn a commission at no extra cost to you."
 ---
 
 # How to Set Up Your First AI Agent in 30 Minutes (No Coding Required)
@@ -26,7 +25,7 @@ That's it. No enterprise software. No complicated infrastructure. No team of dev
 
 ## Step 1: Get a VPS on Vultr
 
-We use [Vultr](https://www.vultr.com/?ref=9880518-9J) for our servers. It's fast to spin up, reliable, and this link gives you 300 dollars in free credits to start, which is enough to get everything running and experiment freely.
+We use [Vultr](https://www.vultr.com/?ref=9880518-9J) for our servers. Use this link and get $300 in free credits, which should last easily 1 to 2 years depending on your setup.
 
 Here's how to create your first server:
 
@@ -38,7 +37,7 @@ Here's how to create your first server:
 6. Choose the cheapest plan available (1 CPU / 1GB RAM is plenty to start)
 7. Scroll down and click **Deploy Now**
 
-Vultr will spin up your server in about 60 seconds. Once it's ready, you'll see an IP address in your dashboard, something like `45.77.123.45`. Copy that IP. You'll need it in the next step.
+Vultr will spin up your server in about 60 seconds. Once it's ready, you'll see an IP address in your dashboard, something like `YOUR_SERVER_IP`. Copy that IP. You'll need it in the next step.
 
 One thing worth knowing: this server is yours. Unlike running an agent through a web app, your data stays on your machine. Nobody else is reading your prompts or storing your business context.
 
@@ -140,7 +139,6 @@ Done. Now open a chat with your new bot in Telegram and say something. Nova shou
 
 Once your channel is connected, you can message Nova directly from either app. Ask her to summarize something. Give her a task. She'll use the AI model you set up in Step 3 to respond. It's a strange and excellent feeling the first time it works.
 
-[IMAGE: Screenshot of Telegram conversation with Nova agent]
 
 ---
 
