@@ -213,6 +213,14 @@ html[data-theme='light'] .text-slate-400 {
   color: var(--text-secondary) !important;
 }
 
+html[data-theme='light'] .bg-violet-600,
+html[data-theme='light'] .hover\:bg-violet-500:hover,
+html[data-theme='light'] .hover\:bg-violet-600:hover,
+html[data-theme='light'] .bg-violet-700,
+html[data-theme='light'] .hover\:bg-violet-700:hover {
+  color: #ffffff !important;
+}
+
 html[data-theme='light'] .text-violet-100,
 html[data-theme='light'] .text-violet-200,
 html[data-theme='light'] .text-violet-300 {
