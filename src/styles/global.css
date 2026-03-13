@@ -710,12 +710,22 @@ html[data-theme='light'] .reading-progress span {
   white-space: pre;
 }
 
+.blog-content pre,
+.blog-content .astro-code {
+  background-color: #1e1e2e !important;
+}
+
 .blog-content pre code {
   display: block;
   font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
   font-size: 0.875rem;
   line-height: 1.7;
   color: #e2e8f0;
+}
+
+.blog-content pre code,
+.blog-content .astro-code code {
+  color: #e2e8f0 !important;
 }
 
 .blog-content pre::-webkit-scrollbar,
@@ -805,19 +815,24 @@ pre.astro-code {
 }
 
 html[data-theme='light'] .blog-content pre,
-html[data-theme='light'] .blog-content code {
-  background: #f5f0ff;
-  border-color: rgba(124, 58, 237, 0.2);
-  color: #1e1b4b;
+html[data-theme='light'] .blog-content .astro-code {
+  background-color: #f5f0ff !important;
+  border-color: rgba(124, 58, 237, 0.2) !important;
+  color: #1e1b4b !important;
 }
 
 html[data-theme='light'] .blog-content pre {
   box-shadow: 0 10px 24px rgba(76, 29, 149, 0.08);
 }
 
-html[data-theme='light'] .blog-content pre code {
-  background: transparent;
-  color: #1e1b4b;
+html[data-theme='light'] .blog-content pre code,
+html[data-theme='light'] .blog-content .astro-code code {
+  background: transparent !important;
+  color: #1e1b4b !important;
+}
+
+html[data-theme='light'] .blog-content pre code span {
+  color: #4c1d95 !important;
 }
 
 html[data-theme='light'] .blog-content pre code[class*='language-']::before {
