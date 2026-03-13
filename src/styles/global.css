@@ -677,7 +677,13 @@ html[data-theme='light'] .reading-progress span {
 }
 
 .blog-content ol {
+  list-style-type: decimal;
+  list-style-position: outside;
   padding-left: 1.25rem;
+}
+
+.blog-content ol li {
+  margin-bottom: 0.65rem;
 }
 
 .blog-content blockquote {
@@ -833,6 +839,12 @@ html[data-theme='light'] .blog-content .astro-code code {
 
 html[data-theme='light'] .blog-content pre code span {
   color: #4c1d95 !important;
+}
+
+html[data-theme='light'] .blog-content :not(pre) > code {
+  background: rgba(124, 58, 237, 0.1) !important;
+  color: #5b21b6 !important;
+  border-color: rgba(124, 58, 237, 0.25) !important;
 }
 
 html[data-theme='light'] .blog-content pre code[class*='language-']::before {
