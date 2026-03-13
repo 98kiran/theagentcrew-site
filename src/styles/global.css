@@ -439,25 +439,56 @@ html[data-theme='light'] .homepage-hero-subtext {
   color: #334155 !important;
 }
 
-.crew-card,
-.blog-card {
+.crew-card {
   transition: all 0.2s ease;
 }
 
-.crew-card:hover,
-.blog-card:hover {
+.crew-card:hover {
   box-shadow: 0 0 24px rgba(124, 58, 237, 0.2);
   border-color: rgba(139, 92, 246, 0.4);
+}
+
+.blog-card {
+  transition: all 0.25s ease;
+  border: 1px solid rgba(139, 92, 246, 0.32);
+  box-shadow:
+    0 0 80px rgba(124, 58, 237, 0.20),
+    0 18px 44px rgba(15, 23, 42, 0.36),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.blog-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(167, 139, 250, 0.48);
+  box-shadow:
+    0 0 100px rgba(124, 58, 237, 0.28),
+    0 24px 54px rgba(15, 23, 42, 0.44),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06);
 }
 
 html[data-theme='light'] .hero-title-gradient {
   filter: none;
 }
 
-html[data-theme='light'] .crew-card:hover,
-html[data-theme='light'] .blog-card:hover {
+html[data-theme='light'] .crew-card:hover {
   box-shadow: none;
   border-color: var(--border) !important;
+}
+
+html[data-theme='light'] .blog-card {
+  border-color: rgba(124, 58, 237, 0.26);
+  box-shadow:
+    0 0 56px rgba(124, 58, 237, 0.12),
+    0 12px 30px rgba(30, 41, 59, 0.10),
+    inset 0 0 0 1px rgba(124, 58, 237, 0.08);
+}
+
+html[data-theme='light'] .blog-card:hover {
+  border-color: rgba(124, 58, 237, 0.34);
+  box-shadow:
+    0 0 76px rgba(124, 58, 237, 0.17),
+    0 16px 36px rgba(30, 41, 59, 0.14),
+    inset 0 0 0 1px rgba(124, 58, 237, 0.12);
 }
 
 .origin-card {
