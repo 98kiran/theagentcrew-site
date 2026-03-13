@@ -391,6 +391,7 @@ html[data-theme='light'] .share-btn:hover {
 
 html[data-theme='light'] .related-card {
   border-color: rgba(124, 58, 237, 0.26) !important;
+  background: linear-gradient(140deg, #ffffff 0%, #f8f5ff 100%) !important;
   box-shadow:
     0 0 56px rgba(124, 58, 237, 0.12),
     0 12px 30px rgba(30, 41, 59, 0.10),
@@ -403,6 +404,12 @@ html[data-theme='light'] .related-card:hover {
     0 0 76px rgba(124, 58, 237, 0.17),
     0 16px 36px rgba(30, 41, 59, 0.14),
     inset 0 0 0 1px rgba(124, 58, 237, 0.12);
+}
+
+html[data-theme='light'] .related-card > span {
+  background: rgba(124, 58, 237, 0.14) !important;
+  border-color: rgba(124, 58, 237, 0.3) !important;
+  color: #5b21b6 !important;
 }
 
 .prose a {
@@ -670,7 +677,13 @@ html[data-theme='light'] .reading-progress span {
 }
 
 .blog-content ol {
+  list-style-type: decimal;
+  list-style-position: outside;
   padding-left: 1.25rem;
+}
+
+.blog-content ol li {
+  margin-bottom: 0.65rem;
 }
 
 .blog-content blockquote {
@@ -690,15 +703,152 @@ html[data-theme='light'] .reading-progress span {
   color: var(--text-primary);
 }
 
+.blog-content pre {
+  position: relative;
+  margin: 1.4rem 0;
+  padding: 1.25rem 1.5rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  background: #1e1e2e;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.3);
+  overflow-x: auto;
+  max-width: 100%;
+  white-space: pre;
+}
 
-
-/* Prevent code blocks from overflowing on mobile */
 .blog-content pre,
+.blog-content .astro-code {
+  background-color: #1e1e2e !important;
+}
+
+.blog-content pre code {
+  display: block;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: #e2e8f0;
+}
+
+.blog-content pre code,
+.blog-content .astro-code code {
+  color: #e2e8f0 !important;
+}
+
+.blog-content pre::-webkit-scrollbar,
+.astro-code::-webkit-scrollbar,
+pre.astro-code::-webkit-scrollbar {
+  height: 6px;
+}
+
+.blog-content pre::-webkit-scrollbar-track,
+.astro-code::-webkit-scrollbar-track,
+pre.astro-code::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.blog-content pre::-webkit-scrollbar-thumb,
+.astro-code::-webkit-scrollbar-thumb,
+pre.astro-code::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.3);
+  border-radius: 3px;
+}
+
+.blog-content pre code[class*='language-'] {
+  position: relative;
+  padding-top: 0.95rem;
+}
+
+.blog-content pre code[class*='language-']::before {
+  position: absolute;
+  top: -0.5rem;
+  right: 0;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(139, 92, 246, 0.5);
+}
+
+.blog-content pre code[class*='language-bash']::before {
+  content: 'bash';
+}
+
+.blog-content pre code[class*='language-javascript']::before,
+.blog-content pre code[class*='language-js']::before {
+  content: 'javascript';
+}
+
+.blog-content pre code[class*='language-json']::before {
+  content: 'json';
+}
+
+.blog-content pre code[class*='language-css']::before {
+  content: 'css';
+}
+
+.blog-content pre code[class*='language-html']::before {
+  content: 'html';
+}
+
+.blog-content pre code[class*='language-python']::before {
+  content: 'python';
+}
+
+.blog-content pre code[class*='language-yaml']::before {
+  content: 'yaml';
+}
+
+.blog-content pre code[class*='language-markdown']::before,
+.blog-content pre code[class*='language-md']::before {
+  content: 'markdown';
+}
+
+.blog-content :not(pre) > code {
+  padding: 0.15em 0.4em;
+  border-radius: 0.35rem;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  background: rgba(139, 92, 246, 0.12);
+  color: #e9d5ff;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 0.9em;
+}
+
 .astro-code,
 pre.astro-code {
   overflow-x: auto !important;
   max-width: 100% !important;
   white-space: pre !important;
+  border-radius: 0.75rem !important;
+}
+
+html[data-theme='light'] .blog-content pre,
+html[data-theme='light'] .blog-content .astro-code {
+  background-color: #f5f0ff !important;
+  border-color: rgba(124, 58, 237, 0.2) !important;
+  color: #1e1b4b !important;
+}
+
+html[data-theme='light'] .blog-content pre {
+  box-shadow: 0 10px 24px rgba(76, 29, 149, 0.08);
+}
+
+html[data-theme='light'] .blog-content pre code,
+html[data-theme='light'] .blog-content .astro-code code {
+  background: transparent !important;
+  color: #1e1b4b !important;
+}
+
+html[data-theme='light'] .blog-content pre code span {
+  color: #4c1d95 !important;
+}
+
+html[data-theme='light'] .blog-content :not(pre) > code {
+  background: rgba(124, 58, 237, 0.1) !important;
+  color: #5b21b6 !important;
+  border-color: rgba(124, 58, 237, 0.25) !important;
+}
+
+html[data-theme='light'] .blog-content pre code[class*='language-']::before {
+  color: rgba(124, 58, 237, 0.45);
 }
 
 /* Prevent horizontal overflow without breaking sticky positioning */
