@@ -409,15 +409,16 @@ html[data-theme='light'] .related-card:hover {
 }
 
 .homepage-hero-card {
-  background: rgba(124, 58, 237, 0.08);
+  background: rgba(124, 58, 237, 0.10);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   will-change: transform;
-  border: 1px solid rgba(139, 92, 246, 0.2);
+  border: 1px solid rgba(139, 92, 246, 0.40);
   box-shadow:
-    0 0 80px rgba(124, 58, 237, 0.2),
-    0 4px 48px rgba(124, 58, 237, 0.15),
-    inset 0 0 0 1px rgba(255,255,255,0.04);
+    0 0 120px rgba(124, 58, 237, 0.35),
+    0 0 40px rgba(124, 58, 237, 0.25),
+    0 4px 48px rgba(124, 58, 237, 0.2),
+    inset 0 0 0 1px rgba(255,255,255,0.06);
 }
 
 .homepage-hero-subtext {
@@ -438,7 +439,7 @@ html[data-theme='light'] .hero-title-gradient {
 html[data-theme='light'] .homepage-hero-card {
   background: linear-gradient(135deg, rgba(124, 58, 237, 0.06) 0%, rgba(255,255,255,0.9) 100%);
   backdrop-filter: none;
-  border-color: rgba(124, 58, 237, 0.2);
+  border-color: rgba(124, 58, 237, 0.35);
   box-shadow: none;
 }
 
