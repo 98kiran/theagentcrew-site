@@ -141,17 +141,56 @@ Once your channel is connected, you can message Nova directly from either app. A
 
 ---
 
-## Give Your Agent a Personality and Memory
+## Step 6: Give Your Agent an Identity (Free Starter Kit)
 
-Your agent is live. That part is done, and it feels good.
+You've done the hard part. The VPS is running, OpenClaw is installed, and your agent is responding. But right now it's essentially a blank chatbot. It has no name, no personality, no memory of who you are, and no idea what to do when you're not talking to it.
 
-But here is what we noticed after our first setup: the agent works, but it does not really know who it is. It has no name beyond what you typed, no memory of past conversations, and no sense of what matters to your business. It responds, but it does not feel like your agent. It feels like a demo.
+The free starter kit changes all of that in about five minutes.
 
-Out of the box, OpenClaw gives you the engine. What it does not give you is the soul. There is no SOUL.md, no USER.md, no memory scaffolding telling the agent how to behave, what to prioritize, or how to sound like it belongs to your team.
+### What's in the Kit
 
-We put together a free starter kit that fixes this. It includes the core identity and memory files, pre-filled templates, and notes on how to fill them in for your specific setup.
+The kit is a set of plain text files that live in your OpenClaw workspace. Your agent reads them automatically at the start of every session. Here's what each one does:
 
-[Get the Free Agent Starter Kit here.](https://www.shopclawmart.com/listings/free-agent-starter-kit-soul-md-templates-2d7777e7)
+- **SOUL** — This is your agent's identity. Name, personality, tone, core rules. Without this, your agent is a blank slate. With it, your agent has a character.
+- **AGENTS** — Operating instructions for every session. What files to read first, how to handle memory, safety rules, how to behave in different contexts.
+- **HEARTBEAT** — A periodic task checklist your agent runs on a timer. Things like checking email, scanning your calendar, doing background work. You can leave it as-is or customize it for your life.
+- **MEMORY** — A long term memory template. Your agent uses this to remember context across sessions, so it's not starting from zero every time you open a chat.
+- **communication_protocol** — Rules for how agents talk to each other. Not critical right now, but it matters a lot once you start running more than one agent.
+
+Together, these files turn a generic AI assistant into something that actually knows you.
+
+### How to Get It
+
+Head to the [Free Agent Starter Kit](https://www.shopclawmart.com/listings/free-agent-starter-kit-soul-md-templates-2d7777e7?utm_source=theagentcrew&utm_medium=blog_setup_guide) on Claw Mart. Create a free account, add the kit to your cart, and check out at $0. Then download the zip.
+
+### How to Install It
+
+On your VPS, unzip the download and copy the files into your OpenClaw workspace:
+
+```bash
+unzip starter-kit.zip
+cp -r starter-kit/* ~/.openclaw/workspace/
+```
+
+The key files go in the workspace root: SOUL, AGENTS, HEARTBEAT, and MEMORY.
+
+Before you do anything else, open your SOUL file and edit it. Change the agent name, set the personality, update the rules to match what you actually want. This is the fun part. Give your agent a real identity, not a placeholder.
+
+Next, open your AGENTS file and find the "About Your Human" section. Put your name in there, your preferences, anything you want your agent to know about you from day one.
+
+The HEARTBEAT file works out of the box. You can leave it alone for now and come back to customize the periodic checks later.
+
+### What Changes
+
+The next time your agent starts a session, it reads all of these files before it says a word to you. It knows who it is, who you are, and what it's supposed to be doing.
+
+Instead of a generic "How can I help you today?", you get an agent that greets you by name, follows the rules you set, and proactively checks in on things without being asked. It goes from a chatbot to your assistant.
+
+That's the whole point. You put in the work to get the infrastructure running. These files are what make it yours.
+
+Grab the kit here if you haven't already: [Free Agent Starter Kit](https://www.shopclawmart.com/listings/free-agent-starter-kit-soul-md-templates-2d7777e7?utm_source=theagentcrew&utm_medium=blog_setup_guide)
+
+---
 
 ## What Happens Next
 
