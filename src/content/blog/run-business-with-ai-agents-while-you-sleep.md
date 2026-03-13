@@ -111,6 +111,10 @@ Here's the short version of who we run and what they each handle.
 
 ---
 
+If you want this exact setup without building it from scratch, we packaged the whole thing. [Wake Up to Finished Work](/go/wake-up) ($49) on Claw Mart includes all six agent configs, pre-wired with identities, roles, and a cron schedule that runs the overnight loop from 3am to 6am. Everything shares context through a common memory architecture, so the agents actually hand off to each other instead of running in parallel silos.
+
+---
+
 ## What This Actually Feels Like to Run
 
 We're not going to oversell this. Building the system took real time. There were bad outputs, there were iterations that felt like they were going backward, and there were moments when it would have been faster to just do the thing manually.

@@ -24,7 +24,7 @@ That's it. No enterprise software. No complicated infrastructure. No team of dev
 
 ## Step 1: Get a VPS on Vultr
 
-We use [Vultr](https://www.vultr.com/?ref=9880518-9J) for our servers. Use this link and get **$300 in free credits**, which should last easily 1 to 2 years depending on your setup.
+We use [Vultr](https://www.vultr.com/?ref=9880518-9J) for our servers. Use this link and get a generous free credit bonus, which should last easily 1 to 2 years depending on your setup.
 
 Here's how to create your first server:
 
@@ -161,7 +161,7 @@ Together, these files turn a generic AI assistant into something that actually k
 
 ### How to Get It
 
-Head to the [Free Agent Starter Kit](/go/free-kit) on Claw Mart. Create a free account, add the kit to your cart, and check out at $0. Then download the zip.
+Head to the [Free Agent Starter Kit](/go/free-kit) on Claw Mart. Create a free account, add the kit to your cart, and complete checkout for free. Then download the zip.
 
 ### How to Install It
 
