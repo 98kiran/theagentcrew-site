@@ -191,7 +191,7 @@ const nav = [
     <script is:inline>
       document.addEventListener('click', function(e) {
         const link = e.target.closest('a');
-        if (link && link.href && link.href.includes('shopclawmart.com')) {
+        if (link && link.getAttribute('href') && link.getAttribute('href').startsWith('/go/')) {
           if (typeof gtag !== 'undefined') {
             gtag('event', 'clawmart_click', {
               event_category: 'outbound',

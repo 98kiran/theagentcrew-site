@@ -81,7 +81,7 @@ Every agent in our setup has what we call a soul document: a plain text file tha
 
 Our free starter kit includes templates for this. It's the same format we use for our own crew, adapted so you can fill in the specifics for your use case and have something functional without starting from scratch.
 
-Download it here: [Free Agent Starter Kit](https://www.shopclawmart.com/listings/free-agent-starter-kit-soul-md-templates-2d7777e7?utm_source=theagentcrew&utm_medium=website&utm_campaign=blog)
+Download it here: [Free Agent Starter Kit](/go/free-kit)
 
 **Step three: Run it, review it, adjust it.**
 
@@ -127,4 +127,4 @@ If you're still doing everything yourself, the path forward isn't complicated. P
 
 The templates in our free starter kit are designed to make that first agent feel real. Download it, fill in the fields for your situation, and you'll have something running before the week is out.
 
-[Download the Free Agent Starter Kit](https://www.shopclawmart.com/listings/free-agent-starter-kit-soul-md-templates-2d7777e7?utm_source=theagentcrew&utm_medium=website&utm_campaign=blog)
+[Download the Free Agent Starter Kit](/go/free-kit)
