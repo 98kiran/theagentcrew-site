@@ -864,3 +864,13 @@ main {
 .site-footer {
   overflow-x: clip;
 }
+
+/* Sticky footer: push footer to bottom on short pages */
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
