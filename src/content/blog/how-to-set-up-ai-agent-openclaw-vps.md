@@ -196,7 +196,7 @@ Grab the kit here if you haven't already: [Free Agent Starter Kit](https://www.s
 
 This is just one agent. The real power comes when you build out a full crew: a writer, a researcher, a developer, a social media manager. Each one handles a piece of your business, talks to the others, and works while you focus on what only you can do.
 
-We've put together a complete guide to building the full crew at [theagentcrew.org](https://theagentcrew.org). It covers each agent role in detail, how to connect them so they coordinate automatically, which tasks to hand off first, and how to grow the setup without things falling apart.
+We've put together a complete guide to building the full crew at [theagentcrew.org](/). It covers each agent role in detail, how to connect them so they coordinate automatically, which tasks to hand off first, and how to grow the setup without things falling apart.
 
 Start here. Get Nova running. Get comfortable having a conversation with your agent. Then come join us over there and we'll walk you through the rest.
 
