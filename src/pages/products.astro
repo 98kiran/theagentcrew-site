@@ -129,7 +129,7 @@ const products = [
           </ul>
 
           <div class="mt-6 flex items-center gap-3">
-            <p class="text-3xl font-black text-violet-300">{product.price}</p>
+            <p class="price-badge text-xl font-black">{product.price}</p>
             <a
               href={product.url}
               target="_blank"
@@ -183,6 +183,17 @@ const products = [
   #path-a,
   #path-b {
     scroll-margin-top: 88px;
+  }
+
+  .price-badge {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(139, 92, 246, 0.5);
+    background: rgba(91, 33, 182, 0.28);
+    color: #e9d5ff;
+    padding: 0.4rem 0.85rem;
+    white-space: nowrap;
   }
 
   .products-surface {
