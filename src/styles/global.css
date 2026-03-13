@@ -639,8 +639,8 @@ pre.astro-code {
   white-space: pre !important;
 }
 
-/* Prevent the whole page from overflowing due to wide content */
-html, body {
-  overflow-x: hidden;
+/* Prevent horizontal overflow without breaking sticky positioning */
+body {
+  overflow-x: clip;
   max-width: 100vw;
 }
