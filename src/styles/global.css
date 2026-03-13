@@ -290,8 +290,13 @@ html[data-theme='light'] .author-badge {
 }
 
 .author-card {
-  border-color: rgba(124, 58, 237, 0.3);
+  border: 1px solid rgba(139, 92, 246, 0.32);
   background: color-mix(in srgb, var(--bg-card) 85%, var(--accent-strong) 15%);
+  box-shadow:
+    0 0 80px rgba(124, 58, 237, 0.20),
+    0 18px 44px rgba(15, 23, 42, 0.36),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  transition: all 0.25s ease;
 }
 
 .author-card-copy {
@@ -303,12 +308,17 @@ html[data-theme='light'] .author-badge {
 }
 
 .share-card {
-  border-color: var(--border);
+  border: 1px solid rgba(139, 92, 246, 0.32);
   background: color-mix(in srgb, var(--bg-card) 88%, var(--bg-soft) 12%);
+  box-shadow:
+    0 0 80px rgba(124, 58, 237, 0.20),
+    0 18px 44px rgba(15, 23, 42, 0.36),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  transition: all 0.25s ease;
 }
 
 .share-btn {
-  border-color: rgba(124, 58, 237, 0.38);
+  border-color: rgba(139, 92, 246, 0.3);
   background: rgba(124, 58, 237, 0.18);
   color: #f5f3ff;
 }
@@ -320,8 +330,12 @@ html[data-theme='light'] .author-badge {
 }
 
 html[data-theme='light'] .author-card {
-  border-color: rgba(124, 58, 237, 0.28) !important;
+  border-color: rgba(124, 58, 237, 0.26) !important;
   background: linear-gradient(140deg, #ffffff 0%, #faf7ff 100%) !important;
+  box-shadow:
+    0 0 56px rgba(124, 58, 237, 0.12),
+    0 12px 30px rgba(30, 41, 59, 0.10),
+    inset 0 0 0 1px rgba(124, 58, 237, 0.08);
 }
 
 html[data-theme='light'] .author-card h2 {
@@ -337,8 +351,12 @@ html[data-theme='light'] .author-card-name {
 }
 
 html[data-theme='light'] .share-card {
-  border-color: rgba(124, 58, 237, 0.22) !important;
+  border-color: rgba(124, 58, 237, 0.26) !important;
   background: linear-gradient(140deg, #ffffff 0%, #f8f5ff 100%) !important;
+  box-shadow:
+    0 0 56px rgba(124, 58, 237, 0.12),
+    0 12px 30px rgba(30, 41, 59, 0.10),
+    inset 0 0 0 1px rgba(124, 58, 237, 0.08);
 }
 
 html[data-theme='light'] .share-btn {
@@ -557,7 +575,6 @@ html[data-theme='light'] .origin-card .origin-emphasis {
 }
 
 .blog-post-hero {
-  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.14);
 }
 
 
