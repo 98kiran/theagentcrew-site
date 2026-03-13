@@ -151,11 +151,11 @@ The free starter kit changes all of that in about five minutes.
 
 The kit is a set of plain text files that live in your OpenClaw workspace. Your agent reads them automatically at the start of every session. Here's what each one does:
 
-- **SOUL** — This is your agent's identity. Name, personality, tone, core rules. Without this, your agent is a blank slate. With it, your agent has a character.
-- **AGENTS** — Operating instructions for every session. What files to read first, how to handle memory, safety rules, how to behave in different contexts.
-- **HEARTBEAT** — A periodic task checklist your agent runs on a timer. Things like checking email, scanning your calendar, doing background work. You can leave it as-is or customize it for your life.
-- **MEMORY** — A long term memory template. Your agent uses this to remember context across sessions, so it's not starting from zero every time you open a chat.
-- **communication_protocol** — Rules for how agents talk to each other. Not critical right now, but it matters a lot once you start running more than one agent.
+- **SOUL.** This is your agent's identity. Name, personality, tone, core rules. Without this, your agent is a blank slate. With it, your agent has a character.
+- **AGENTS.** Operating instructions for every session. What files to read first, how to handle memory, safety rules, how to behave in different contexts.
+- **HEARTBEAT.** A periodic task checklist your agent runs on a timer. Things like checking email, scanning your calendar, doing background work. You can leave it as-is or customize it for your life.
+- **MEMORY.** A long term memory template. Your agent uses this to remember context across sessions, so it's not starting from zero every time you open a chat.
+- **communication_protocol.** Rules for how agents talk to each other. Not critical right now, but it matters a lot once you start running more than one agent.
 
 Together, these files turn a generic AI assistant into something that actually knows you.
 
