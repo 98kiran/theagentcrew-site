@@ -165,9 +165,16 @@ Head to the [Free Agent Starter Kit](https://www.shopclawmart.com/listings/free-
 
 ### How to Install It
 
-On your VPS, unzip the download and copy the files into your OpenClaw workspace:
+Download the zip to your local machine. Then transfer it to your VPS using scp (replace YOUR_SERVER_IP with your actual server IP):
 
 ```bash
+scp ~/Downloads/starter-kit.zip root@YOUR_SERVER_IP:~/
+```
+
+Then SSH into your VPS and unzip the files into your OpenClaw workspace:
+
+```bash
+cd ~
 unzip starter-kit.zip
 cp -r starter-kit/* ~/.openclaw/workspace/
 ```
