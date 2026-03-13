@@ -141,6 +141,18 @@ Once your channel is connected, you can message Nova directly from either app. A
 
 ---
 
+## Give Your Agent a Personality and Memory
+
+Your agent is live. That part is done, and it feels good.
+
+But here is what we noticed after our first setup: the agent works, but it does not really know who it is. It has no name beyond what you typed, no memory of past conversations, and no sense of what matters to your business. It responds, but it does not feel like your agent. It feels like a demo.
+
+Out of the box, OpenClaw gives you the engine. What it does not give you is the soul. There is no SOUL.md, no USER.md, no memory scaffolding telling the agent how to behave, what to prioritize, or how to sound like it belongs to your team.
+
+We put together a free starter kit that fixes this. It includes the core identity and memory files, pre-filled templates, and notes on how to fill them in for your specific setup.
+
+[Get the Free Agent Starter Kit here.](https://www.shopclawmart.com/listings/free-agent-starter-kit-soul-md-templates-2d7777e7)
+
 ## What Happens Next
 
 This is just one agent. The real power comes when you build out a full crew: a writer, a researcher, a developer, a social media manager. Each one handles a piece of your business, talks to the others, and works while you focus on what only you can do.
