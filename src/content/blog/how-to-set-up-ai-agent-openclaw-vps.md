@@ -161,7 +161,7 @@ Together, these files turn a generic AI assistant into something that actually k
 
 ### How to Get It
 
-Head to the [Free Agent Starter Kit](https://www.shopclawmart.com/listings/free-agent-starter-kit-soul-md-templates-2d7777e7?utm_source=theagentcrew&utm_medium=blog_setup_guide) on Claw Mart. Create a free account, add the kit to your cart, and check out at $0. Then download the zip.
+Head to the [Free Agent Starter Kit](/go/free-kit) on Claw Mart. Create a free account, add the kit to your cart, and check out at $0. Then download the zip.
 
 ### How to Install It
 
@@ -195,7 +195,7 @@ Instead of a generic "How can I help you today?", you get an agent that greets y
 
 That's the whole point. You put in the work to get the infrastructure running. These files are what make it yours.
 
-Grab the kit here if you haven't already: [Free Agent Starter Kit](https://www.shopclawmart.com/listings/free-agent-starter-kit-soul-md-templates-2d7777e7?utm_source=theagentcrew&utm_medium=blog_setup_guide)
+Grab the kit here if you haven't already: [Free Agent Starter Kit](/go/free-kit)
 
 ---
 
