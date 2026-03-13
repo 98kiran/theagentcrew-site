@@ -391,6 +391,7 @@ html[data-theme='light'] .share-btn:hover {
 
 html[data-theme='light'] .related-card {
   border-color: rgba(124, 58, 237, 0.26) !important;
+  background: linear-gradient(140deg, #ffffff 0%, #f8f5ff 100%) !important;
   box-shadow:
     0 0 56px rgba(124, 58, 237, 0.12),
     0 12px 30px rgba(30, 41, 59, 0.10),
@@ -403,6 +404,12 @@ html[data-theme='light'] .related-card:hover {
     0 0 76px rgba(124, 58, 237, 0.17),
     0 16px 36px rgba(30, 41, 59, 0.14),
     inset 0 0 0 1px rgba(124, 58, 237, 0.12);
+}
+
+html[data-theme='light'] .related-card > span {
+  background: rgba(124, 58, 237, 0.14) !important;
+  border-color: rgba(124, 58, 237, 0.3) !important;
+  color: #5b21b6 !important;
 }
 
 .prose a {
@@ -797,20 +804,24 @@ pre.astro-code {
   border-radius: 0.75rem !important;
 }
 
-html[data-theme='light'] .blog-content pre {
-  background: #f8f5ff;
+html[data-theme='light'] .blog-content pre,
+html[data-theme='light'] .blog-content code {
+  background: #f5f0ff;
   border-color: rgba(124, 58, 237, 0.2);
+  color: #1e1b4b;
+}
+
+html[data-theme='light'] .blog-content pre {
   box-shadow: 0 10px 24px rgba(76, 29, 149, 0.08);
 }
 
 html[data-theme='light'] .blog-content pre code {
-  color: #312e81;
+  background: transparent;
+  color: #1e1b4b;
 }
 
-html[data-theme='light'] .blog-content :not(pre) > code {
-  background: rgba(124, 58, 237, 0.08);
-  border-color: rgba(124, 58, 237, 0.18);
-  color: #6d28d9;
+html[data-theme='light'] .blog-content pre code[class*='language-']::before {
+  color: rgba(124, 58, 237, 0.45);
 }
 
 /* Prevent horizontal overflow without breaking sticky positioning */
