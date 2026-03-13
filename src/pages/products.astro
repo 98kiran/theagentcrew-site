@@ -136,14 +136,15 @@ const products = [
             ))}
           </ul>
 
-          <div class="mt-6">
+          <div class="mt-6 flex items-center gap-3">
+            <p class="price-badge text-xl font-black">{product.price}</p>
             <a
               href={product.url}
               target="_blank"
               rel="noopener noreferrer"
-              class="cta-primary w-full inline-flex items-center justify-center rounded-xl px-4 py-3.5 text-sm font-semibold text-white"
+              class="cta-primary inline-flex items-center justify-center rounded-xl px-4 py-3.5 text-sm font-semibold text-white"
             >
-              Buy on Claw Mart — {product.price}
+              Get it on Claw Mart
             </a>
           </div>
         </article>
@@ -190,6 +191,17 @@ const products = [
   #path-a,
   #path-b {
     scroll-margin-top: 88px;
+  }
+
+  .price-badge {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(139, 92, 246, 0.5);
+    background: rgba(91, 33, 182, 0.28);
+    color: #e9d5ff;
+    padding: 0.4rem 0.85rem;
+    white-space: nowrap;
   }
 
   .products-surface {
