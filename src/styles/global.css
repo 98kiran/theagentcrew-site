@@ -275,7 +275,7 @@ html[data-theme='light'] .blog-card {
 }
 
 html[data-theme='light'] .blog-card:hover {
-  box-shadow: 0 12px 24px rgba(124, 58, 237, 0.12);
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.12), 0 4px 12px rgba(0,0,0,0.08);
 }
 
 html[data-theme='light'] .blog-card h2 a,
@@ -516,11 +516,15 @@ html[data-theme='light'] .origin-card .origin-emphasis {
 }
 
 .blog-card {
+  transition: all 0.2s ease;
+  border: 1px solid rgba(139, 92, 246, 0.20);
   box-shadow: 0 8px 22px rgba(15, 23, 42, 0.16);
 }
 
 .blog-card:hover {
-  box-shadow: 0 14px 30px rgba(124, 58, 237, 0.2);
+  border-color: rgba(139, 92, 246, 0.45);
+  box-shadow: 0 0 24px rgba(124, 58, 237, 0.18), 0 4px 16px rgba(0,0,0,0.3);
+  transform: translateY(-2px);
 }
 
 .author-badge {
