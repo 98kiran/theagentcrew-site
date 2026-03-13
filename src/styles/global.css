@@ -690,15 +690,127 @@ html[data-theme='light'] .reading-progress span {
   color: var(--text-primary);
 }
 
+.blog-content pre {
+  position: relative;
+  margin: 1.4rem 0;
+  padding: 1.25rem 1.5rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  background: #1e1e2e;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.3);
+  overflow-x: auto;
+  max-width: 100%;
+  white-space: pre;
+}
 
+.blog-content pre code {
+  display: block;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: #e2e8f0;
+}
 
-/* Prevent code blocks from overflowing on mobile */
-.blog-content pre,
+.blog-content pre::-webkit-scrollbar,
+.astro-code::-webkit-scrollbar,
+pre.astro-code::-webkit-scrollbar {
+  height: 6px;
+}
+
+.blog-content pre::-webkit-scrollbar-track,
+.astro-code::-webkit-scrollbar-track,
+pre.astro-code::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.blog-content pre::-webkit-scrollbar-thumb,
+.astro-code::-webkit-scrollbar-thumb,
+pre.astro-code::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.3);
+  border-radius: 3px;
+}
+
+.blog-content pre code[class*='language-'] {
+  position: relative;
+  padding-top: 0.95rem;
+}
+
+.blog-content pre code[class*='language-']::before {
+  position: absolute;
+  top: -0.5rem;
+  right: 0;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(139, 92, 246, 0.5);
+}
+
+.blog-content pre code[class*='language-bash']::before {
+  content: 'bash';
+}
+
+.blog-content pre code[class*='language-javascript']::before,
+.blog-content pre code[class*='language-js']::before {
+  content: 'javascript';
+}
+
+.blog-content pre code[class*='language-json']::before {
+  content: 'json';
+}
+
+.blog-content pre code[class*='language-css']::before {
+  content: 'css';
+}
+
+.blog-content pre code[class*='language-html']::before {
+  content: 'html';
+}
+
+.blog-content pre code[class*='language-python']::before {
+  content: 'python';
+}
+
+.blog-content pre code[class*='language-yaml']::before {
+  content: 'yaml';
+}
+
+.blog-content pre code[class*='language-markdown']::before,
+.blog-content pre code[class*='language-md']::before {
+  content: 'markdown';
+}
+
+.blog-content :not(pre) > code {
+  padding: 0.15em 0.4em;
+  border-radius: 0.35rem;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  background: rgba(139, 92, 246, 0.12);
+  color: #e9d5ff;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 0.9em;
+}
+
 .astro-code,
 pre.astro-code {
   overflow-x: auto !important;
   max-width: 100% !important;
   white-space: pre !important;
+  border-radius: 0.75rem !important;
+}
+
+html[data-theme='light'] .blog-content pre {
+  background: #f8f5ff;
+  border-color: rgba(124, 58, 237, 0.2);
+  box-shadow: 0 10px 24px rgba(76, 29, 149, 0.08);
+}
+
+html[data-theme='light'] .blog-content pre code {
+  color: #312e81;
+}
+
+html[data-theme='light'] .blog-content :not(pre) > code {
+  background: rgba(124, 58, 237, 0.08);
+  border-color: rgba(124, 58, 237, 0.18);
+  color: #6d28d9;
 }
 
 /* Prevent horizontal overflow without breaking sticky positioning */
