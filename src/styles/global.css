@@ -457,7 +457,7 @@ html[data-theme='light'] .related-card:hover {
 html[data-theme='light'] .hero-glow-card {
   border-color: rgba(124, 58, 237, 0.24) !important;
   background-image: linear-gradient(135deg, #f6f1ff 0%, #ffffff 58%, #f4f0ff 100%) !important;
-  box-shadow: inset 0 0 80px rgba(124, 58, 237, 0.05), inset 0 0 0 1px rgba(124, 58, 237, 0.2), 0 10px 26px rgba(76, 29, 149, 0.08);
+  box-shadow: inset 0 0 80px rgba(124, 58, 237, 0.07), inset 0 0 0 1px rgba(124, 58, 237, 0.22), 0 12px 30px rgba(76, 29, 149, 0.10);
 }
 
 html[data-theme='light'] .hero-title-gradient {
@@ -469,7 +469,10 @@ html[data-theme='light'] .homepage-hero-card {
   background: linear-gradient(135deg, rgba(124, 58, 237, 0.06) 0%, rgba(255,255,255,0.9) 100%);
   backdrop-filter: none;
   border-color: rgba(124, 58, 237, 0.28);
-  box-shadow: none;
+  box-shadow:
+    0 0 60px rgba(124, 58, 237, 0.10),
+    0 12px 32px rgba(30, 41, 59, 0.08),
+    inset 0 0 0 1px rgba(124, 58, 237, 0.10);
 }
 
 html[data-theme='light'] .homepage-hero-subtext {
