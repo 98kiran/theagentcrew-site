@@ -399,9 +399,12 @@ html[data-theme='light'] .related-card:hover {
 }
 
 .hero-title-gradient {
+  display: inline-block;
   background: linear-gradient(135deg, #ffffff 0%, #c4b5fd 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  line-height: 1.18;
+  padding-bottom: 0.12em;
   filter: drop-shadow(0 0 20px rgba(167, 139, 250, 0.4));
 }
 
